@@ -1,0 +1,8 @@
+[
+{
+  "directory": "C:/Users/sohukia/Documents/GitHub/CDataFrame/build",
+  "command": "C:\\ProgramData\\mingw64\\mingw64\\bin\\gcc.exe   -g -o CMakeFiles\\CDataFrame.dir\\main.c.obj -c C:\\Users\\sohukia\\Documents\\GitHub\\CDataFrame\\main.c",
+  "file": "C:/Users/sohukia/Documents/GitHub/CDataFrame/main.c",
+  "output": "CMakeFiles/CDataFrame.dir/main.c.obj"
+}
+]
