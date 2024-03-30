@@ -1,15 +1,12 @@
 cmake_minimum_required(VERSION 3.27)
-project(CDataFrame VERSION 0.1.0 LANGUAGES C)
+project(CDataFrame C)
 
-include(CTest)
-enable_testing()
+set(CMAKE_C_STANDARD 17)
 
-add_executable(CDataFrame main.c)
-add_executable(
-  Column.h Column.c
-  CDataFrame.h CDataFrame.c
-)
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+add_executable(CDataFrame main.c
+        source/Column/Column.c
+        source/Column/Column.h
+        source/CDataFrame/CDataFrame.c
+        source/CDataFrame/CDataFrame.h
+        source/Sorting/Sorting.c
+        source/Sorting/Sorting.h)
