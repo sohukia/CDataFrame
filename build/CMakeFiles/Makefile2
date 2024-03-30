@@ -63,6 +63,7 @@ CMAKE_BINARY_DIR = C:\Users\sohukia\Documents\GitHub\CDataFrame\build
 
 # The main recursive "all" target.
 all: CMakeFiles/CDataFrame.dir/all
+all: CMakeFiles/Column.h.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -99,6 +100,7 @@ clean: CMakeFiles/ContinuousCoverage.dir/clean
 clean: CMakeFiles/ContinuousMemCheck.dir/clean
 clean: CMakeFiles/ContinuousSubmit.dir/clean
 clean: CMakeFiles/CDataFrame.dir/clean
+clean: CMakeFiles/Column.h.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -854,6 +856,32 @@ CDataFrame: CMakeFiles/CDataFrame.dir/rule
 CMakeFiles/CDataFrame.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CDataFrame.dir\build.make CMakeFiles/CDataFrame.dir/clean
 .PHONY : CMakeFiles/CDataFrame.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/Column.h.dir
+
+# All Build rule for target.
+CMakeFiles/Column.h.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:\Users\sohukia\Documents\GitHub\CDataFrame\build\CMakeFiles --progress-num=3,4,5 "Built target Column.h"
+.PHONY : CMakeFiles/Column.h.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/Column.h.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\sohukia\Documents\GitHub\CDataFrame\build\CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/Column.h.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\sohukia\Documents\GitHub\CDataFrame\build\CMakeFiles 0
+.PHONY : CMakeFiles/Column.h.dir/rule
+
+# Convenience name for target.
+Column.h: CMakeFiles/Column.h.dir/rule
+.PHONY : Column.h
+
+# clean rule for target.
+CMakeFiles/Column.h.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/clean
+.PHONY : CMakeFiles/Column.h.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -522,6 +522,67 @@ CDataFrame/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\CDataFrame.dir\build.make CMakeFiles/CDataFrame.dir/build
 .PHONY : CDataFrame/fast
 
+#=============================================================================
+# Target rules for targets named Column.h
+
+# Build rule for target.
+Column.h: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 Column.h
+.PHONY : Column.h
+
+# fast build rule for target.
+Column.h/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/build
+.PHONY : Column.h/fast
+
+CDataFrame.obj: CDataFrame.c.obj
+.PHONY : CDataFrame.obj
+
+# target to build an object file
+CDataFrame.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/CDataFrame.c.obj
+.PHONY : CDataFrame.c.obj
+
+CDataFrame.i: CDataFrame.c.i
+.PHONY : CDataFrame.i
+
+# target to preprocess a source file
+CDataFrame.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/CDataFrame.c.i
+.PHONY : CDataFrame.c.i
+
+CDataFrame.s: CDataFrame.c.s
+.PHONY : CDataFrame.s
+
+# target to generate assembly for a file
+CDataFrame.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/CDataFrame.c.s
+.PHONY : CDataFrame.c.s
+
+Column.obj: Column.c.obj
+.PHONY : Column.obj
+
+# target to build an object file
+Column.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/Column.c.obj
+.PHONY : Column.c.obj
+
+Column.i: Column.c.i
+.PHONY : Column.i
+
+# target to preprocess a source file
+Column.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/Column.c.i
+.PHONY : Column.c.i
+
+Column.s: Column.c.s
+.PHONY : Column.s
+
+# target to generate assembly for a file
+Column.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Column.h.dir\build.make CMakeFiles/Column.h.dir/Column.c.s
+.PHONY : Column.c.s
+
 main.obj: main.c.obj
 .PHONY : main.obj
 
@@ -586,6 +647,13 @@ help:
 	@echo ... NightlyTest
 	@echo ... NightlyUpdate
 	@echo ... CDataFrame
+	@echo ... Column.h
+	@echo ... CDataFrame.obj
+	@echo ... CDataFrame.i
+	@echo ... CDataFrame.s
+	@echo ... Column.obj
+	@echo ... Column.i
+	@echo ... Column.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

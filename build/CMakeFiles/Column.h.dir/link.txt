@@ -1,0 +1,3 @@
+"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\Column.h.dir/objects.a
+C:\ProgramData\mingw64\mingw64\bin\ar.exe qc CMakeFiles\Column.h.dir/objects.a @CMakeFiles\Column.h.dir\objects1.rsp
+C:\ProgramData\mingw64\mingw64\bin\gcc.exe -g -Wl,--whole-archive CMakeFiles\Column.h.dir/objects.a -Wl,--no-whole-archive -o Column.h.exe -Wl,--out-implib,libColumn.h.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Column.h.dir\linkLibs.rsp
