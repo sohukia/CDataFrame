@@ -1,0 +1,4 @@
+# ninja log v5
+0	129	7335062273643681	CMakeFiles/CDataFrame.dir/main.c.obj	56d0f99d9276c36c
+4	134	7335062273693693	CMakeFiles/CDataFrame.dir/Column.c.obj	53919cb64ff67069
+134	344	7335062275762881	CDataFrame.exe	889424b312839197
