@@ -11,23 +11,29 @@
 
 Column *create_column(DataType type, char *title)
 {
-	Column *to_create = (Column *)malloc(sizeof(Column));
-	if (to_create == NULL) return NULL;
+ Column *to_create = (Column *)malloc(sizeof(Column));
+ if (to_create == NULL) return NULL;
 
-	to_create->index = NULL;
+ to_create->index = NULL;
 
-	to_create->title = strdup(title);
-	if (to_create->title == NULL) // failed to create a column
-	{
-		free(to_create);
-		return NULL;
-	}
-	to_create->max_size = REALLOC_SIZE;
-	to_create->size = 0;
-	to_create->datatype = type;
-	to_create->data = NULL;
+ to_create->title = strdup(title);
+ if (to_create->title == NULL) // failed to create a column
+ {
+  free(to_create);
+  return NULL;
+ }
+ to_create->max_size = REALLOC_SIZE;
+ to_create->size = 0;
+ to_create->datatype = type;
+ to_create->data = (COLUMN_TYPE **)malloc(to_create->max_size * sizeof(COLUMN_TYPE *));
+ if (to_create->data == NULL) // failed to allocate memory for data
+ {
+  free(to_create->title);
+  free(to_create);
+  return NULL;
+ }
 
-	return to_create;
+ return to_create;
 }
 
 int insert_value(Column *column, void *value)
@@ -82,30 +88,35 @@ int insert_value(Column *column, void *value)
 
 void convert_value (Column *column, unsigned long long int i, char *str, int size)
 {
-	switch(column->datatype)
-	{
-		case UINT:
-			snprintf(str, size, "%u\n", ((unsigned int *) column->data)[i]);
-			break;
-		case INT:
-			snprintf(str, size, "%d\n", ((int*)column->data)[i]);
-			break;
-		case CHAR:
-			snprintf(str, size, "%c\n", ((char*)column->data)[i]);
-			break;
-		case FLOAT:
-			snprintf(str, size, "%f\n", ((float*)column->data)[i]);
-			break;
-		case DOUBLE:
-			snprintf(str, size, "%lf\n", ((double*)column->data)[i]);
-			break;
-		case STRING:
-			snprintf(str, size, "%s\n", ((char**)column->data)[i]);
-			break;
-		default:
-			printf("Error: unknown type\n");
-			return;
-	}
+ if (i >= column->size) {
+  printf("Error: index out of bounds\n");
+  return;
+ }
+
+ switch(column->datatype)
+ {
+  case UINT:
+   snprintf(str, size, "%u\n", column->data[i]->value.uint_value);
+   break;
+  case INT:
+   snprintf(str, size, "%d\n", column->data[i]->value.int_value);
+   break;
+  case CHAR:
+   snprintf(str, size, "%c\n", column->data[i]->value.char_value);
+   break;
+  case FLOAT:
+   snprintf(str, size, "%f\n", column->data[i]->value.float_value);
+   break;
+  case DOUBLE:
+   snprintf(str, size, "%lf\n", column->data[i]->value.double_value);
+   break;
+  case STRING:
+   snprintf(str, size, "%s\n", column->data[i]->value.string_value);
+   break;
+  default:
+   printf("Error: unknown type\n");
+   return;
+ }
 }
 
 void delete_column(Column **column)
