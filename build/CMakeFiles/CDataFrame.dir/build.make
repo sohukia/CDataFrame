@@ -82,19 +82,67 @@ CMakeFiles/CDataFrame.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDataFrame.dir/main.c.s"
 	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\sohukia\Documents\GitHub\CDataFrame\main.c -o CMakeFiles\CDataFrame.dir\main.c.s
 
+CMakeFiles/CDataFrame.dir/source/Column/Column.c.obj: CMakeFiles/CDataFrame.dir/flags.make
+CMakeFiles/CDataFrame.dir/source/Column/Column.c.obj: C:/Users/sohukia/Documents/GitHub/CDataFrame/source/Column/Column.c
+CMakeFiles/CDataFrame.dir/source/Column/Column.c.obj: CMakeFiles/CDataFrame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\sohukia\Documents\GitHub\CDataFrame\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/CDataFrame.dir/source/Column/Column.c.obj"
+	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDataFrame.dir/source/Column/Column.c.obj -MF CMakeFiles\CDataFrame.dir\source\Column\Column.c.obj.d -o CMakeFiles\CDataFrame.dir\source\Column\Column.c.obj -c C:\Users\sohukia\Documents\GitHub\CDataFrame\source\Column\Column.c
+
+CMakeFiles/CDataFrame.dir/source/Column/Column.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDataFrame.dir/source/Column/Column.c.i"
+	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\sohukia\Documents\GitHub\CDataFrame\source\Column\Column.c > CMakeFiles\CDataFrame.dir\source\Column\Column.c.i
+
+CMakeFiles/CDataFrame.dir/source/Column/Column.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDataFrame.dir/source/Column/Column.c.s"
+	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\sohukia\Documents\GitHub\CDataFrame\source\Column\Column.c -o CMakeFiles\CDataFrame.dir\source\Column\Column.c.s
+
+CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.obj: CMakeFiles/CDataFrame.dir/flags.make
+CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.obj: C:/Users/sohukia/Documents/GitHub/CDataFrame/source/CDataFrame/CDataFrame.c
+CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.obj: CMakeFiles/CDataFrame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\sohukia\Documents\GitHub\CDataFrame\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.obj"
+	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.obj -MF CMakeFiles\CDataFrame.dir\source\CDataFrame\CDataFrame.c.obj.d -o CMakeFiles\CDataFrame.dir\source\CDataFrame\CDataFrame.c.obj -c C:\Users\sohukia\Documents\GitHub\CDataFrame\source\CDataFrame\CDataFrame.c
+
+CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.i"
+	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\sohukia\Documents\GitHub\CDataFrame\source\CDataFrame\CDataFrame.c > CMakeFiles\CDataFrame.dir\source\CDataFrame\CDataFrame.c.i
+
+CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.s"
+	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\sohukia\Documents\GitHub\CDataFrame\source\CDataFrame\CDataFrame.c -o CMakeFiles\CDataFrame.dir\source\CDataFrame\CDataFrame.c.s
+
+CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.obj: CMakeFiles/CDataFrame.dir/flags.make
+CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.obj: C:/Users/sohukia/Documents/GitHub/CDataFrame/source/Sorting/Sorting.c
+CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.obj: CMakeFiles/CDataFrame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:\Users\sohukia\Documents\GitHub\CDataFrame\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.obj"
+	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.obj -MF CMakeFiles\CDataFrame.dir\source\Sorting\Sorting.c.obj.d -o CMakeFiles\CDataFrame.dir\source\Sorting\Sorting.c.obj -c C:\Users\sohukia\Documents\GitHub\CDataFrame\source\Sorting\Sorting.c
+
+CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.i"
+	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\sohukia\Documents\GitHub\CDataFrame\source\Sorting\Sorting.c > CMakeFiles\CDataFrame.dir\source\Sorting\Sorting.c.i
+
+CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.s"
+	C:\ProgramData\mingw64\mingw64\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\sohukia\Documents\GitHub\CDataFrame\source\Sorting\Sorting.c -o CMakeFiles\CDataFrame.dir\source\Sorting\Sorting.c.s
+
 # Object files for target CDataFrame
 CDataFrame_OBJECTS = \
-"CMakeFiles/CDataFrame.dir/main.c.obj"
+"CMakeFiles/CDataFrame.dir/main.c.obj" \
+"CMakeFiles/CDataFrame.dir/source/Column/Column.c.obj" \
+"CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.obj" \
+"CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.obj"
 
 # External object files for target CDataFrame
 CDataFrame_EXTERNAL_OBJECTS =
 
 CDataFrame.exe: CMakeFiles/CDataFrame.dir/main.c.obj
+CDataFrame.exe: CMakeFiles/CDataFrame.dir/source/Column/Column.c.obj
+CDataFrame.exe: CMakeFiles/CDataFrame.dir/source/CDataFrame/CDataFrame.c.obj
+CDataFrame.exe: CMakeFiles/CDataFrame.dir/source/Sorting/Sorting.c.obj
 CDataFrame.exe: CMakeFiles/CDataFrame.dir/build.make
 CDataFrame.exe: CMakeFiles/CDataFrame.dir/linkLibs.rsp
 CDataFrame.exe: CMakeFiles/CDataFrame.dir/objects1.rsp
 CDataFrame.exe: CMakeFiles/CDataFrame.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\sohukia\Documents\GitHub\CDataFrame\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable CDataFrame.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:\Users\sohukia\Documents\GitHub\CDataFrame\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable CDataFrame.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\CDataFrame.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
