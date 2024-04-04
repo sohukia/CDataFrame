@@ -78,4 +78,10 @@ char *convert_struct(COLUMN_TYPE *struct_value);
  */
 void convert_value(Column *column, unsigned long long int i, char *str, int size);
 
+/**
+ * @brief Print  a column cotent
+ * @param : Pointer to the column
+ */
+void print_column(Column *column);
+
 #endif //CDATAFRAME_COLUMN_H

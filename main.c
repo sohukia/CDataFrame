@@ -15,6 +15,8 @@ int main() {
 	convert_value(column, 0, output, 5);
 	printf("%s\n", output);
 
+	print_column(column);
+
 	delete_column(&column);
 	return 0;
 }

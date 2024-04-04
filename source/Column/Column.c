@@ -155,3 +155,18 @@ void delete_column(Column **column)
 	free(*column);
 	*column = NULL;
 }
+
+void print_column(Column *column)
+{
+	if (column == NULL) return;
+
+	printf("Column: %s\n", column->title);
+	printf("Size: %d\n", column->size);
+	printf("Max size: %d\n", column->max_size);
+	printf("Data type: %d\n", column->datatype);
+	for (unsigned int i = 0; i < column->size; i++)
+	{
+		char str[256];
+		convert_value(column, i, str, 256);
+	}
+}
