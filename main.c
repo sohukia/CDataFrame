@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "source/Column/Column.h"
+#include "source/Sorting/Sorting.h"
 
 int main() {
 	Column *column = create_column(UINT, "test");
@@ -9,11 +10,12 @@ int main() {
 	insert_value(column, &value);
 	value = 7;
 	insert_value(column, &value);
+	value = 1;
+	insert_value(column, &value);
 
-	char output[5];
+	print_column(column);
 
-	convert_value(column, 0, output, 5);
-	printf("%s\n", output);
+	quicksort(column->data, column->datatype, 0, column->size - 1);
 
 	print_column(column);
 

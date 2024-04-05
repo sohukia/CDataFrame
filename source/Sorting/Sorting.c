@@ -13,14 +13,16 @@ void swap(COLUMN_TYPE **a, COLUMN_TYPE **b)
 	*b = temp;
 }
 
-int partition(void* array, int low, int high)
+int partition(void *array, DataType type, int low, int high)
 {
 	COLUMN_TYPE **arr = (COLUMN_TYPE **)array;
+	for(int i = low; i <= high; arr[i++]->datatype = type);
 	COLUMN_TYPE *pivot = arr[high];
+
 	int i = low - 1;
 	for (int j = low; j <= high - 1; j++)
 	{
-		switch (arr[j]->datatype)
+		switch (type)
 		{
 			case UINT:
 				if (arr[j]->value.uint_value < pivot->value.uint_value)
@@ -70,15 +72,44 @@ int partition(void* array, int low, int high)
 		}
 	}
 	swap(&arr[i + 1], &arr[high]);
-	return (i + 1);
+	return (int)(i + 1);
 }
 
-void quicksort(void* array, int low, int high)
+// non recursive quicksort
+void quicksort(void *array, DataType type, int low, int high)
 {
-	if (low < high)
-	{
-		int pi = partition(array, low, high);
-		quicksort(array, low, pi - 1);
-		quicksort(array, pi + 1, high);
-	}
+    // Create an auxiliary stack
+    int stack[high - low + 1];
+
+    // Initialize top of stack
+    int top = -1;
+
+    // Push initial values of low and high to stack
+    stack[++top] = low;
+    stack[++top] = high;
+
+    // Keep popping from stack while it is not empty
+    while (top >= 0)
+    {
+        // Pop high and low
+        high = stack[top--];
+        low = stack[top--];
+
+        // Set pivot element at its correct position in sorted array
+        int pi = partition(array, type, low, high);
+
+        // If there are elements on left side of pivot, then push left side to stack
+        if (pi - 1 > low)
+        {
+            stack[++top] = low;
+            stack[++top] = pi - 1;
+        }
+
+        // If there are elements on right side of pivot, then push right side to stack
+        if (pi + 1 < high)
+        {
+            stack[++top] = pi + 1;
+            stack[++top] = high;
+        }
+    }
 }

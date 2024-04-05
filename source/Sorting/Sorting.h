@@ -7,6 +7,7 @@
 
 #include "../Column/Column.h"
 
+
 /**
  * @brief Swap two pointers
  * @param : pointer to a pointer
@@ -17,11 +18,12 @@ void swap(COLUMN_TYPE **a, COLUMN_TYPE **b);
 /**
  * @brief Partition the array
  * @param : pointer to the array
+ * @param : type of the data
  * @param : low index
  * @param : high index
  * @return : partition index
  */
-int partition(void* array, int low, int high);
+int partition(void *array, DataType type, int low, int high);
 
 /**
  * @brief Sort the array with quicksort
@@ -29,5 +31,5 @@ int partition(void* array, int low, int high);
  * @param : low index
  * @param : high index
  */
-void quicksort(void* array, int low, int high);
+void quicksort(void *array, DataType type, int low, int high);
 #endif //CDATAFRAME_SORTING_H
