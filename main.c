@@ -3,19 +3,15 @@
 #include "source/Sorting/Sorting.h"
 
 int main() {
-	Column *column = create_column(UINT, "test");
-	unsigned int value = 5;
+	Column *column = create_column(FLOAT, "test");
+	float value = 5.4f;
 	insert_value(column, &value);
-	value = 3;
+	value = 3.345f;
 	insert_value(column, &value);
-	value = 7;
+	value = 7.237f;
 	insert_value(column, &value);
-	value = 1;
+	value = 1.002f;
 	insert_value(column, &value);
-
-	print_column(column);
-
-	quicksort(column->data, column->datatype, 0, column->size - 1);
 
 	print_column(column);
 

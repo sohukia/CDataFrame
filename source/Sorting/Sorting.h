@@ -23,7 +23,7 @@ void swap(COLUMN_TYPE **a, COLUMN_TYPE **b);
  * @param : high index
  * @return : partition index
  */
-int partition(void *array, DataType type, int low, int high);
+int partition(void *array, DataType type, int low, unsigned int high);
 
 /**
  * @brief Sort the array with quicksort
@@ -31,5 +31,17 @@ int partition(void *array, DataType type, int low, int high);
  * @param : low index
  * @param : high index
  */
-void quicksort(void *array, DataType type, int low, int high);
+void quicksort(void *array, DataType type, int low, unsigned int high);
+
+/**
+ * @bref Sort the partially sorted array with insertion sort
+ * @param : pointer to the array
+ * @param : type of the data
+ * @param : low index
+ * @param : high index
+ * @param : threshold
+ * @return : 1 if the array is sorted 0 otherwise
+ */
+int insertion_sort(void *array, DataType type, int low, unsigned int high);
+
 #endif //CDATAFRAME_SORTING_H

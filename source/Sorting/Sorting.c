@@ -13,12 +13,10 @@ void swap(COLUMN_TYPE **a, COLUMN_TYPE **b)
 	*b = temp;
 }
 
-int partition(void *array, DataType type, int low, int high)
+int partition(void *array, DataType type, int low, unsigned int high)
 {
 	COLUMN_TYPE **arr = (COLUMN_TYPE **)array;
-	for(int i = low; i <= high; arr[i++]->datatype = type);
 	COLUMN_TYPE *pivot = arr[high];
-
 	int i = low - 1;
 	for (int j = low; j <= high - 1; j++)
 	{
@@ -76,7 +74,7 @@ int partition(void *array, DataType type, int low, int high)
 }
 
 // non recursive quicksort
-void quicksort(void *array, DataType type, int low, int high)
+void quicksort(void *array, DataType type, int low, unsigned int high)
 {
     // Create an auxiliary stack
     int stack[high - low + 1];
@@ -112,4 +110,66 @@ void quicksort(void *array, DataType type, int low, int high)
             stack[++top] = high;
         }
     }
+}
+
+int insertion_sort(void *array, DataType type, int low, unsigned int high)
+{
+	COLUMN_TYPE **arr = (COLUMN_TYPE **)array;
+	int i, j;
+	COLUMN_TYPE *key;
+	for (i = low + 1; i <= high; i++)
+	{
+		key = arr[i];
+		j = i - 1;
+		switch (type)
+		{
+			case UINT:
+				while (j >= low && arr[j]->value.uint_value > key->value.uint_value)
+				{
+					arr[j + 1] = arr[j];
+					j = j - 1;
+				}
+				break;
+			case INT:
+				while (j >= low && arr[j]->value.int_value > key->value.int_value)
+				{
+					arr[j + 1] = arr[j];
+					j = j - 1;
+				}
+				break;
+			case CHAR:
+				while (j >= low && arr[j]->value.char_value > key->value.char_value)
+				{
+					arr[j + 1] = arr[j];
+					j = j - 1;
+				}
+				break;
+			case FLOAT:
+				while (j >= low && arr[j]->value.float_value > key->value.float_value)
+				{
+					arr[j + 1] = arr[j];
+					j = j - 1;
+				}
+				break;
+			case DOUBLE:
+				while (j >= low && arr[j]->value.double_value > key->value.double_value)
+				{
+					arr[j + 1] = arr[j];
+					j = j - 1;
+				}
+				break;
+			case STRING:
+				while (j >= low && strcmp(arr[j]->value.string_value, key->value.string_value) > 0)
+				{
+					arr[j + 1] = arr[j];
+					j = j - 1;
+				}
+				break;
+			default:
+				printf("Error: unknown type\n");
+				return -1;
+		}
+		arr[j + 1] = key;
+	}
+	return 1;
 }
