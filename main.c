@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "source/Column/Column.h"
-#include "source/Sorting/Sorting.h"
 
 int main() {
 	Column *column = create_column(FLOAT, "test");
