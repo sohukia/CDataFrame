@@ -45,7 +45,7 @@ int insert_value(Column *column, void *value)
 	COLUMN_TYPE *new_value = (COLUMN_TYPE *)malloc(sizeof(COLUMN_TYPE));
 	if (new_value == NULL) return 0; // failed to allocate memory
 
-
+	// insert the value
 	switch (column->datatype)
 	{
 		case UINT:
@@ -81,7 +81,6 @@ int insert_value(Column *column, void *value)
 
 	column->data[column->size] = new_value;
 	column->size++;
-
 	return 1;
 
 }
@@ -160,13 +159,12 @@ void print_column(Column *column)
 {
 	if (column == NULL) return;
 
-	printf("Column: %s\n", column->title);
-	printf("Size: %d\n", column->size);
-	printf("Max size: %d\n", column->max_size);
-	printf("Data type: %d\n", column->datatype);
+	printf("%s\n", column->title);
 	for (unsigned int i = 0; i < column->size; i++)
 	{
 		char str[256];
 		convert_value(column, i, str, 256);
+		printf("%s", str);
 	}
+	printf("Size: %d\n", column->size);
 }
