@@ -4,7 +4,10 @@
 
 #ifndef CDATAFRAME_COLUMN_H
 #define CDATAFRAME_COLUMN_H
+
 #define REALLOC_SIZE 256
+#define ASC 0
+#define DESC 1
 
 typedef enum
 {
@@ -30,7 +33,12 @@ typedef struct
 
 struct column
 {
-	unsigned long long int *index;
+	unsigned long long *index;
+	// index validity 0 - no index, -1 - index is invalid, 1 - index is valid
+	int valid_index;
+	// sorting direction 0 - ascending, 1 - descending
+	int sort_direction;
+
 	char *title;
 	unsigned int max_size;
 	unsigned int size;

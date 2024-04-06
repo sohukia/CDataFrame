@@ -8,7 +8,7 @@ add_executable(CDataFrame main.c
         source/Column/Column.h
         source/CDataFrame/CDataFrame.c
         source/CDataFrame/CDataFrame.h
-        source/Column/Sorting/Sorting.c
-        source/Column/Sorting/Sorting.h
-        source/Column/Searching/Searching.c
-        source/Column/Searching/Searching.h)
+				source/Sorting/Sorting.c
+				source/Sorting/Sorting.h
+				source/Searching/Searching.c
+				source/Searching/Searching.h)

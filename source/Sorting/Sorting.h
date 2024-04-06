@@ -5,7 +5,7 @@
 #ifndef CDATAFRAME_SORTING_H
 #define CDATAFRAME_SORTING_H
 
-#include "../Column.h"
+#include "../Column/Column.h"
 
 
 /**
