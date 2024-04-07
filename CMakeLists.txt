@@ -11,4 +11,6 @@ add_executable(CDataFrame main.c
 				source/Sorting/Sorting.c
 				source/Sorting/Sorting.h
 				source/Searching/Searching.c
-				source/Searching/Searching.h)
+				source/Searching/Searching.h
+		source/types.h
+)

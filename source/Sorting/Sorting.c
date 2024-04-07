@@ -107,7 +107,7 @@ void quicksort(void *array, DataType type, int low, unsigned int high)
         if (pi + 1 < high)
         {
             stack[++top] = pi + 1;
-            stack[++top] = high;
+            stack[++top] = (int)high;
         }
     }
 }
