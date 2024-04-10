@@ -168,3 +168,54 @@ void print_column(Column *column)
 	}
 	printf("Size: %d\n", column->size);
 }
+
+int count_occurrences(Column *column, void *value)
+{
+    int count = 0;
+
+    for (int i = 0; i < column->size; i++)
+    {
+        switch (column->datatype)
+        {
+            case UINT:
+                if (column->data[i]->value.uint_value == *(unsigned int *) value)
+                {
+                    count++;
+                }
+                break;
+            case INT:
+                if (column->data[i]->value.int_value == *(int *) value)
+                {
+                    count++;
+                }
+                break;
+            case CHAR:
+                if (column->data[i]->value.char_value == *(char *) value)
+                {
+                    count++;
+                }
+                break;
+            case FLOAT:
+                if (column->data[i]->value.float_value == *(float *) value)
+                {
+                    count++;
+                }
+                break;
+            case DOUBLE:
+                if (column->data[i]->value.double_value == *(double *) value)
+                {
+                    count++;
+                }
+                break;
+            case STRING:
+                if (strcmp(column->data[i]->value.string_value, (char *) value) == 0)
+                {
+                    count++;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    return count;
+}
