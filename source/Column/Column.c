@@ -219,3 +219,59 @@ int count_occurrences(Column *column, void *value)
     }
     return count;
 }
+
+int get_position(Column *column, void *value, int size)
+{
+    int pos = 0;
+    if (column == NULL || value == NULL)
+    {
+        printf("Error: invalid argument\n");
+        return -1;
+    }
+
+    for (int i=0; i < column->size; i++ )
+    {
+        switch(column->datatype)
+        {
+            case UINT:
+                if (column->data[i]->value.uint_value == *(unsigned int *) value)
+                {
+                    pos = i;
+                }
+                break;
+            case INT:
+                if (column->data[i]->value.int_value == *(int *) value)
+                {
+                    pos = i;
+                }
+                break;
+            case CHAR:
+                if (column->data[i]->value.char_value == *(char *) value)
+                {
+                    pos = i;
+                }
+                break;
+            case FLOAT:
+                if (column->data[i]->value.float_value == *(float *) value)
+                {
+                    pos = i;
+                }
+                break;
+            case DOUBLE:
+                if (column->data[i]->value.int_value == *(double *) value)
+                {
+                    pos = i;
+                }
+                break;
+            case STRING:
+                if (strcmp(column->data[i]->value.string_value, (char *) value) == 0)
+                {
+                    pos = i;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    return pos;
+}
