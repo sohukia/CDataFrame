@@ -335,7 +335,8 @@ int count_greater_than(Column *column, void *value, int size)
                 }
                 break;
             case DOUBLE:
-                if (sizeof(double) != size) {
+                if (sizeof(double) != size)
+                {
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
@@ -345,7 +346,8 @@ int count_greater_than(Column *column, void *value, int size)
                 }
                 break;
             case STRING:
-                if (size < 0) {
+                if (size < 0)
+                {
                     printf("Error: invalid size\n");
                     return -1;
                 }
@@ -362,67 +364,83 @@ int count_greater_than(Column *column, void *value, int size)
     return count;
 }
 
-int count_less_than(Column *column, void *value, int size) {
-    if (column == NULL || value == NULL) {
+int count_less_than(Column *column, void *value, int size)
+{
+    if (column == NULL || value == NULL)
+    {
         printf("Error: invalid argument\n");
         return -1;
     }
 
     int count = 0;
 
-    for (int i = 0; i < column->size; i++) {
-        switch (column->datatype) {
+    for (int i = 0; i < column->size; i++)
+    {
+        switch (column->datatype)
+        {
             case UINT:
-                if (sizeof(unsigned int) != size) {
+                if (sizeof(unsigned int) != size)
+                {
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.uint_value < *(unsigned int *) value) {
+                if (column->data[i]->value.uint_value < *(unsigned int *) value)
+                {
                     count++;
                 }
                 break;
             case INT:
-                if (sizeof(int) != size) {
+                if (sizeof(int) != size)
+                {
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.int_value < *(int *) value) {
+                if (column->data[i]->value.int_value < *(int *) value)
+                {
                     count++;
                 }
                 break;
             case CHAR:
-                if (sizeof(char) != size) {
+                if (sizeof(char) != size)
+                {
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.char_value < *(char *) value) {
+                if (column->data[i]->value.char_value < *(char *) value)
+                {
                     count++;
                 }
                 break;
             case FLOAT:
-                if (sizeof(float) != size) {
+                if (sizeof(float) != size)
+                {
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.float_value < *(float *) value) {
+                if (column->data[i]->value.float_value < *(float *) value)
+                {
                     count++;
                 }
                 break;
             case DOUBLE:
-                if (sizeof(double) != size) {
+                if (sizeof(double) != size)
+                {
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.double_value < *(double *) value) {
+                if (column->data[i]->value.double_value < *(double *) value)
+                {
                     count++;
                 }
                 break;
             case STRING:
-                if (size < 0) {
+                if (size < 0)
+                {
                     printf("Error: invalid size\n");
                     return -1;
                 }
-                if (strcmp(column->data[i]->value.string_value, (char *) value) < 0) {
+                if (strcmp(column->data[i]->value.string_value, (char *) value) < 0)
+                {
                     count++;
                 }
                 break;
