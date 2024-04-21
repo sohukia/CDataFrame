@@ -12,47 +12,84 @@
 #define DESC 1
 
 /**
- * @brief Constructor
- * @param : type of the column
- * @param : column title
- * @return : pointer to the newly created column
+ * @brief Creates a new column
+ * @param type: The data type of the column
+ * @param title: The title of the column
+ * @return A pointer to the newly created column
  */
 Column *create_column(DataType type, char *title);
 
 /**
- * @brief Insert value in a column
- * @param : pointer to a column
- * @param : value to add
- * @return : 1 if value added 0 otherwise
+ * @brief Inserts a value into a column
+ * @param column: The column to insert the value into
+ * @param value: The value to insert
+ * @return 1 if the value was successfully inserted, 0 otherwise
  */
 int insert_value(Column *column, void *value);
 
 /**
- * @brief  Free the space allocated by a column
- * @param : Pointer to the column
- */
-void delete_column(Column **column);
-
-/**
- * @brief : Convert a structure into a string
- * @param : Pointer to the structure
- * @return : String representation of the structure
- */
-char *convert_struct(COLUMN_TYPE *struct_value);
-
-/**
- * @brief Convert a value into a string
- * @param : Pointer to the column
- * @param : Position of the value in the data array
- * @param : The string in which the value will be written
- * @param : Maximum size of the string
+ * @brief Converts a value to a string
+ * @param column: The column that contains the value
+ * @param i: The index of the value in the column
+ * @param str: The string to store the converted value
+ * @param size: The size of the string
  */
 void convert_value(Column *column, unsigned long long int i, char *str, int size);
 
 /**
- * @brief Print a column's content
- * @param : Pointer to the column
+ * @brief Deletes a column and frees all associated memory
+ * @param column: The column to delete
+ */
+void delete_column(Column **column);
+
+/**
+ * @brief Prints the contents of a column
+ * @param column: The column to print
  */
 void print_column(Column *column);
+
+/**
+ * @brief Counts the occurrences of a value in a column
+ * @param column: The column to search
+ * @param value: The value to count
+ * @return The number of occurrences of the value in the column
+ */
+int count_occurrences(Column *column, void *value);
+
+/**
+ * @brief Gets the position of a value in a column
+ * @param column: The column to search
+ * @param value: The value to find
+ * @param size: The size of the value
+ * @return The position of the value in the column
+ */
+int get_position(Column *column, void *value, int size);
+
+/**
+ * @brief Counts the number of values in a column that are greater than a given value
+ * @param column: The column to search
+ * @param value: The value to compare
+ * @param size: The size of the value
+ * @return The number of values in the column that are greater than the given value
+ */
+int count_greater_than(Column *column, void *value, int size);
+
+/**
+ * @brief Counts the number of values in a column that are less than a given value
+ * @param column: The column to search
+ * @param value: The value to compare
+ * @param size: The size of the value
+ * @return The number of values in the column that are less than the given value
+ */
+int count_less_than(Column *column, void *value, int size);
+
+/**
+ * @brief Counts the number of values in a column that are equal to a given value
+ * @param column: The column to search
+ * @param value: The value to compare
+ * @param size: The size of the value
+ * @return The number of values in the column that are equal to the given value
+ */
+int count_equal_to(Column *column, void *value, int size);
 
 #endif //CDATAFRAME_COLUMN_H
