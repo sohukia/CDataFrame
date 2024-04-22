@@ -23,5 +23,5 @@ The CDataFrame library provides the following features (at least for now):
 - Get the position of a value in a column.
 - Count the number of values in a column that are greater than, less than, or equal to a given value.
 
-## Link to repository
-You can find the source code for this project on GitHub [here](https://github.com/sohukia/CDataFrame) (but it is not public so you will have a 404 error, please [send me an email](mailto:brewen.digonnaux--lanrelec@efrei.net) so that I can add you as a project viewer.)
+## License
+This project is all rights reserved.
