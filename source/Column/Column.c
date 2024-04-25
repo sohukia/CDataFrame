@@ -178,7 +178,7 @@ int count_occurrences(Column *column, void *value)
         printf("Error: invalid argument\n");
         return -1;
     }
-    
+
     for (int i = 0; i < column->size; i++)
     {
         switch (column->datatype)
