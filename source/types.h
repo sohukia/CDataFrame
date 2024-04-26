@@ -43,4 +43,21 @@ struct column
 };
 typedef struct column Column;
 
+
+// Double linked list implementation
+
+typedef struct list_node_
+{
+    Column *column;
+    struct list_node_ *prev;
+    struct list_node_ *next;
+} ListNode;
+
+typedef struct
+{
+    ListNode *head;
+    ListNode *tail;
+    unsigned int size;
+} List;
+
 #endif //CDATAFRAME_TYPES_H

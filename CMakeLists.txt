@@ -13,6 +13,6 @@ add_executable(CDataFrame main.c
 				source/Searching/Searching.c
 				source/Searching/Searching.h
 		source/types.h
-		source/Node/node.c
-		source/Node/node.h
+		source/List/List.c
+		source/List/List.h
 )
