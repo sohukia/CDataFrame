@@ -60,4 +60,8 @@ typedef struct
     unsigned int size;
 } List;
 
+typedef List DATAFRAME;
+
+typedef DataType ENUM_TYPE;
+
 #endif //CDATAFRAME_TYPES_H

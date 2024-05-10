@@ -7,58 +7,87 @@
 
 ListNode *create_list_node(Column *column) {
     ListNode *node = (ListNode*) malloc(sizeof(ListNode));
-    if(!node) {
+    if(node == NULL) {
         printf("Memory allocation failed!\n");
         return NULL;
     }
 
     node->column = column;
     node->next = NULL;
+    node->prev = NULL;
 
     return node;
 }
 
-void insert_list_node(ListNode **tail, Column *column) {
+void insert_list_node(List *list, Column *column) {
     ListNode *node = create_list_node(column);
-    if(!node) {
-        return;
+    if(node == NULL) return;
+
+    if(list->head == NULL) {
+        list->head = node;
+        list->tail = node;
+    } else {
+        list->tail->next = node;
+        node->prev = list->tail;
+        list->tail = node;
     }
 
-    if(*tail == NULL) {
-        *tail = node;
-        return;
-    }
-
-    ListNode *temp = *tail;
-    while(temp->next != NULL) {
-        temp = temp->next;
-    }
-
-    temp->next = node;
+    list->size++;
 }
 
-void insert_head(ListNode **head, Column *column) {
+void insert_head(List *list, Column *column) {
     ListNode *node = create_list_node(column);
-    if(!node) {
+    if(node == NULL) return;
+
+    if(list->head == NULL) {
+        list->head = node;
+        list->tail = node;
+    } else {
+        node->next = list->head;
+        list->head->prev = node;
+        list->head = node;
+    }
+
+    list->size++;
+}
+
+void insert_after(List *list, ListNode *node, Column *column) {
+    if(node == NULL) {
+        printf("Node is NULL!\n");
         return;
     }
 
-    node->next = *head;
-    *head = node;
+    ListNode *new_node = create_list_node(column);
+    if(new_node == NULL) return;
+
+    new_node->next = node->next;
+    node->next = new_node;
+
+    list->size++;
 }
 
-void delete_list_node(ListNode *node) {
+void delete_list_node(List *list, ListNode *node) {
     if(node) {
+        if(node->prev) {
+            node->prev->next = node->next;
+        } else {
+            list->head = node->next;
+        }
         delete_column(&node->column);
         free(node);
+        list->size--;
     }
 }
 
-void delete_list(ListNode **head) {
-    ListNode *temp;
-    while(*head) {
-        temp = *head;
-        *head = (*head)->next;
-        delete_list_node(temp);
+void delete_list(List *list) {
+    ListNode *current = list->head;
+
+    while(list->size > 0 && current != NULL) {
+        ListNode *next = current->next;
+        delete_list_node(list, current);
+        current = next;
     }
+
+    list->head = NULL;
+    free(list);
 }

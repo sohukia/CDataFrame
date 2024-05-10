@@ -125,9 +125,11 @@ void delete_column(Column **column)
 
 	// free the title
 	if ((*column)->title != NULL) free((*column)->title);
+	(*column)->title = NULL;
 
 	// free the index
 	if ((*column)->index != NULL) free((*column)->index);
+	(*column)->index = NULL;
 
 	// free the data
 	if ((*column)->data != NULL)
@@ -140,14 +142,17 @@ void delete_column(Column **column)
 				{
 					case STRING:
 						free((*column)->data[i]->value.string_value);
+						(*column)->data[i]->value.string_value = NULL;
 						break;
 					default:
 						break;
 				}
 				free((*column)->data[i]);
+				(*column)->data[i] = NULL;
 			}
 		}
 		free((*column)->data);
+		(*column)->data = NULL;
 	}
 
 	// free the column
