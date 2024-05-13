@@ -13,10 +13,10 @@ void swap(COLUMN_TYPE **a, COLUMN_TYPE **b)
 	*b = temp;
 }
 
-int partition(void *array, DataType type, int low, unsigned int high)
+int partition(void *array, const DataType type, const int low, const unsigned int high)
 {
 	COLUMN_TYPE **arr = (COLUMN_TYPE **)array;
-	COLUMN_TYPE *pivot = arr[high];
+	const COLUMN_TYPE *pivot = arr[high];
 	int i = low - 1;
 	for (int j = low; j <= high - 1; j++)
 	{
@@ -74,7 +74,7 @@ int partition(void *array, DataType type, int low, unsigned int high)
 }
 
 // non recursive quicksort
-void quicksort(void *array, DataType type, int low, unsigned int high)
+void quicksort(void *array, const DataType type, int low, unsigned int high)
 {
     // Create an auxiliary stack
     int stack[high - low + 1];
@@ -94,7 +94,7 @@ void quicksort(void *array, DataType type, int low, unsigned int high)
         low = stack[top--];
 
         // Set pivot element at its correct position in sorted array
-        int pi = partition(array, type, low, high);
+        const int pi = partition(array, type, low, high);
 
         // If there are elements on left side of pivot, then push left side to stack
         if (pi - 1 > low)
@@ -112,15 +112,14 @@ void quicksort(void *array, DataType type, int low, unsigned int high)
     }
 }
 
-int insertion_sort(void *array, DataType type, int low, unsigned int high)
+int insertion_sort(void *array, const DataType type, const int low, const unsigned int high)
 {
-	COLUMN_TYPE **arr = (COLUMN_TYPE **)array;
-	int i, j;
-	COLUMN_TYPE *key;
-	for (i = low + 1; i <= high; i++)
+	COLUMN_TYPE **arr = array;
+	;
+	for (int i = low + 1; i <= high; i++)
 	{
-		key = arr[i];
-		j = i - 1;
+		COLUMN_TYPE *key = arr[i];
+		int j = i - 1;
 		switch (type)
 		{
 			case UINT:
