@@ -37,7 +37,7 @@ void add_data(Column *column, COLUMN_TYPE *data)
 	column->size++; // increment the size of the column
 }
 
-int convert_value(Column *column, const unsigned long long int i, char *buffer)
+int convert_value(const Column *column, const unsigned long long int i, char *buffer)
 {
 	if (column == NULL || buffer == NULL) return 0;
 	if (i >= column->size) {

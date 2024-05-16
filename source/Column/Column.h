@@ -30,7 +30,7 @@ void add_data(Column *column, COLUMN_TYPE *data);
  * @param buffer: The buffer to store the string
  * @return the lenght of the value inserted in the buffer
  */
-int convert_value(const Column *column, unsigned long long int i, char *buffer);
+int convert_value(const Column *column, const unsigned long long int i, char *buffer);
 
 /**
  * @brief Deletes a column and frees all associated memory
