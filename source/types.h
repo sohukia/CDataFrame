@@ -30,10 +30,6 @@ typedef struct
 struct column
 {
     unsigned long long *index;
-    // index validity 0 - no index, -1 - index is invalid, 1 - index is valid
-    int valid_index;
-    // sorting direction 0 - ascending, 1 - descending
-    int sort_direction;
 
     char *title;
     unsigned int max_size;
@@ -43,24 +39,21 @@ struct column
 };
 typedef struct column Column;
 
-
 // Double linked list implementation
+typedef struct Node_ {
+    Column* data;
+    struct Node_* next;
+    struct Node_* prev;
+} Node;
 
-typedef struct list_node_
-{
-    Column *column;
-    struct list_node_ *prev;
-    struct list_node_ *next;
-} ListNode;
-
-typedef struct
-{
-    ListNode *head;
-    ListNode *tail;
-    unsigned int size;
+typedef struct {
+    Node* head;
+    Node* tail;
 } List;
 
-typedef List DATAFRAME;
+typedef struct {
+    List columns;
+} DataFrame;
 
 typedef DataType ENUM_TYPE;
 

@@ -15,4 +15,5 @@ add_executable(CDataFrame main.c
 		source/types.h
 		source/List/List.c
 		source/List/List.h
+		source/test.c
 )

@@ -7,47 +7,40 @@
 
 #include "../types.h"
 
-#define REALLOC_SIZE 256
-#define ASC 0
-#define DESC 1
-
 /**
  * @brief Creates a new column
- * @param type: The data type of the column
- * @param title: The title of the column
+ * @param title: the title of the column
+ * @param max_size: the maximum size of the column
+ * @param datatype: the datatype of the column
  * @return A pointer to the newly created column
  */
-Column *create_column(DataType type, char *title);
+Column *create_column(const char *title, unsigned int max_size, DataType datatype);
 
 /**
- * @brief Inserts a value into a column
- * @param column: The column to insert the value into
- * @param value: The value to insert
- * @return 1 if the value was successfully inserted, 0 otherwise
+ * @brief Inserts some data into a column
+ * @param column: the column to insert the value into
+ * @param data: the value to insert
  */
-int insert_value(Column *column, void *value);
+void add_data(Column *column, COLUMN_TYPE *data);
 
 /**
  * @brief Converts a value to a string
  * @param column: The column that contains the value
  * @param i: The index of the value in the column
- * @param str: The string to store the converted value
- * @param size: The size of the string
+ * @param buffer: The buffer to store the string
  */
-void convert_value(Column *column, unsigned long long int i, char *str, int size);
+void convert_value(const Column *column, unsigned long long int i, char *buffer);
 
 /**
  * @brief Deletes a column and frees all associated memory
- * @param column: The column to delete
+ * @param column: The column to free
  */
-void delete_column(Column **column);
+void free_column(Column *column);
 
 /**
  * @brief Prints the contents of a column
  * @param column: The column to print
  */
-void print_column(Column *column);
-
-
+void print_column(const Column *column);
 
 #endif //CDATAFRAME_COLUMN_H

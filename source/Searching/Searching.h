@@ -50,5 +50,12 @@ int count_less_than(Column *column, void *value, int size);
  */
 int count_equal_to(Column *column, void *value, int size);
 
+/**
+ * @brief search for a column by name and return its associated node
+ * @param df the dataframe to search
+ * @param name the name of the column to search for
+ * @return the node associated with the column
+ */
+Node *search_by_name(DataFrame *df, const char *name);
 
 #endif //CDATAFRAME_SEARCHING_H
