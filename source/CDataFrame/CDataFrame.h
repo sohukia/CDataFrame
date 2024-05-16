@@ -52,6 +52,6 @@ void print_dataframe(const DataFrame *df);
  * @param df: the dataframe to add the row to
  * @param data: the data to add
  */
-void add_dataframe_row(DataFrame *df, COLUMN_TYPE **data);
+void add_dataframe_row(const DataFrame *df, COLUMN_TYPE **data);
 
 #endif //CDATAFRAME_CDATAFRAME_H
