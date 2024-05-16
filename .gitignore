@@ -58,3 +58,4 @@ CMakeScripts/
 Testing/
 cmake-build-debug/
 cmake-build-release/
+.idea/editor.xml
