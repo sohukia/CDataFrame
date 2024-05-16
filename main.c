@@ -1,37 +1,36 @@
+#include <stdio.h>
+#include <string.h>
+
 #include "source/Column/Column.h"
 #include "source/Searching/Searching.h"
-#include <stdio.h>
+#include "source/List/List.h"
+#include "source/Sorting/Sorting.h"
 
 int main() {
-	Column *column = create_column(FLOAT, "test");
-	float value = 5.4f;
-	insert_value(column, &value);
-	value = 3.345f;
-	insert_value(column, &value);
-	value = 7.237f;
-	insert_value(column, &value);
-	value = 1.002f;
-    insert_value(column, &value);
-    insert_value(column, &value);
-
-    print_column(column);
-
-    int count = count_occurrences(column, &value);
-    printf("Count of %f: %d\n", value, count);
-
-    int position = get_position(column, &value);
-    printf("Position of %f: %d\n", value, position);
-
-    float compare = 3.0f;
-    int greater = count_greater_than(column, &compare, sizeof(float));
-    printf("Greater than %f: %d\n", compare, greater);
-
-    int less = count_less_than(column, &compare, sizeof(float));
-    printf("Less than %f: %d\n", compare, less);
-
-    int equal = count_equal_to(column, &compare, sizeof(float));
-    printf("Equal to %f: %d\n", compare, equal);
-
-	delete_column(&column);
+	Column *column = create_column("Column 1", 10, UINT);
+	COLUMN_TYPE *data = (COLUMN_TYPE *)malloc(sizeof(COLUMN_TYPE));
+	data->datatype = UINT;
+	data->value.uint_value = 10;
+	add_data(column, data);
+	data = (COLUMN_TYPE *)malloc(sizeof(COLUMN_TYPE));
+	data->datatype = UINT;
+	data->value.uint_value = 5;
+	add_data(column, data);
+	data = (COLUMN_TYPE *)malloc(sizeof(COLUMN_TYPE));
+	data->datatype = UINT;
+	data->value.uint_value = 7;
+	add_data(column, data);
+	data = (COLUMN_TYPE *)malloc(sizeof(COLUMN_TYPE));
+	data->datatype = UINT;
+	data->value.uint_value = 3;
+	add_data(column, data);
+	data = (COLUMN_TYPE *)malloc(sizeof(COLUMN_TYPE));
+	data->datatype = UINT;
+	data->value.uint_value = 1;
+	add_data(column, data);
+	print_column(column);
+	insertion_sort(column->data, UINT, 0, column->size - 1);
+	print_column(column);
+	free_column(column);
 	return 0;
 }
