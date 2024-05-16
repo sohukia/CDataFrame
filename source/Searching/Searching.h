@@ -53,9 +53,23 @@ int count_equal_to(Column *column, void *value, int size);
 /**
  * @brief search for a column by name and return its associated node
  * @param df the dataframe to search
- * @param name the name of the column to search for
+ * @param title the name of the column to search for
  * @return the node associated with the column
  */
-Node *search_by_name(DataFrame *df, const char *name);
+Node *search_by_name(DataFrame *df, const char *title);
+
+/**
+ * @brief get the size of the dataframe
+ * @param df the dataframe to get the size of
+ * @return the size of the dataframe
+ */
+int get_dataframe_size(DataFrame *df);
+
+/**
+ * @brief get the maximum number of rows in the dataframe
+ * @param df the dataframe to get the maximum number of rows of
+ * @return the maximum number of rows in the dataframe
+ */
+int get_dataframe_max_rows(DataFrame *df);
 
 #endif //CDATAFRAME_SEARCHING_H

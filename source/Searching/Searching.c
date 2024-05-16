@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int count_occurrences(Column *column, void *value)
+int count_occurrences(const Column *column, void *value)
 {
     int count = 0;
 
@@ -63,7 +63,7 @@ int count_occurrences(Column *column, void *value)
     return count;
 }
 
-int get_position(Column *column, void *value)
+int get_position(const Column *column, void *value)
 {
     int pos = 0;
     if (column == NULL || value == NULL)
@@ -119,7 +119,7 @@ int get_position(Column *column, void *value)
     return pos;
 }
 
-int count_greater_than(Column *column, void *value, int size)
+int count_greater_than(const Column *column, void *value, const int size)
 {
     if (column == NULL || value == NULL)
     {
@@ -207,7 +207,7 @@ int count_greater_than(Column *column, void *value, int size)
     return count;
 }
 
-int count_less_than(Column *column, void *value, int size)
+int count_less_than(const Column *column, void *value, const int size)
 {
     if (column == NULL || value == NULL)
     {
@@ -295,7 +295,7 @@ int count_less_than(Column *column, void *value, int size)
     return count;
 }
 
-int count_equal_to(Column *column, void *value, int size)
+int count_equal_to(const Column *column, void *value, const int size)
 {
     if (column == NULL || value == NULL)
     {
@@ -381,4 +381,42 @@ int count_equal_to(Column *column, void *value, int size)
     }
 
     return count;
+}
+
+Node *search_by_name(const DataFrame *df, const char *title) {
+    Node *current = df->columns.head;
+    while (current != NULL)
+    {
+        if (strcmp(current->data->title, title) == 0)
+        {
+            return current;
+        }
+        current = current->next;
+    }
+    return NULL;
+}
+
+int get_dataframe_size(const DataFrame *df) {
+    int size = 0;
+    const Node *current = df->columns.head;
+    while (current != NULL)
+    {
+        size++;
+        current = current->next;
+    }
+    return size;
+}
+
+int get_dataframe_max_rows(const DataFrame *df) {
+    int max_rows = 0;
+    const Node *current = df->columns.head;
+    while (current != NULL)
+    {
+        if (current->data->size > max_rows)
+        {
+            max_rows = current->data->size;
+        }
+        current = current->next;
+    }
+    return max_rows;
 }
