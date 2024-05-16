@@ -12,16 +12,15 @@
  * @param value: The value to count
  * @return The number of occurrences of the value in the column
  */
-int count_occurrences(Column *column, void *value);
+int count_occurrences(const Column *column, void *value);
 
 /**
  * @brief Gets the position of a value in a column
  * @param column: The column to search
  * @param value: The value to find
- * @param size: The size of the value
  * @return The position of the value in the column
  */
-int get_position(Column *column, void *value);
+int get_position(const Column *column, void *value);
 
 /**
  * @brief Counts the number of values in a column that are greater than a given value
@@ -30,7 +29,7 @@ int get_position(Column *column, void *value);
  * @param size: The size of the value
  * @return The number of values in the column that are greater than the given value
  */
-int count_greater_than(Column *column, void *value, int size);
+int count_greater_than(const Column *column, void *value, int size);
 
 /**
  * @brief Counts the number of values in a column that are less than a given value
@@ -39,7 +38,7 @@ int count_greater_than(Column *column, void *value, int size);
  * @param size: The size of the value
  * @return The number of values in the column that are less than the given value
  */
-int count_less_than(Column *column, void *value, int size);
+int count_less_than(const Column *column, void *value, int size);
 
 /**
  * @brief Counts the number of values in a column that are equal to a given value
@@ -48,14 +47,28 @@ int count_less_than(Column *column, void *value, int size);
  * @param size: The size of the value
  * @return The number of values in the column that are equal to the given value
  */
-int count_equal_to(Column *column, void *value, int size);
+int count_equal_to(const Column *column, void *value, int size);
 
 /**
  * @brief search for a column by name and return its associated node
  * @param df the dataframe to search
- * @param name the name of the column to search for
+ * @param title the name of the column to search for
  * @return the node associated with the column
  */
-Node *search_by_name(DataFrame *df, const char *name);
+Node *search_by_name(const DataFrame *df, const char *title);
+
+/**
+ * @brief get the size of the dataframe
+ * @param df the dataframe to get the size of
+ * @return the size of the dataframe
+ */
+int get_dataframe_size(const DataFrame *df);
+
+/**
+ * @brief get the maximum number of rows in the dataframe
+ * @param df the dataframe to get the maximum number of rows of
+ * @return the maximum number of rows in the dataframe
+ */
+int get_dataframe_max_rows(const DataFrame *df);
 
 #endif //CDATAFRAME_SEARCHING_H

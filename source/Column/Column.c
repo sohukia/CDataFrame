@@ -37,36 +37,43 @@ void add_data(Column *column, COLUMN_TYPE *data)
 	column->size++; // increment the size of the column
 }
 
-void convert_value(const Column *column, const unsigned long long int i, char *buffer)
+int convert_value(Column *column, const unsigned long long int i, char *buffer)
 {
-	if (column == NULL || buffer == NULL) return;
-	if (i >= column->size) return;
+	if (column == NULL || buffer == NULL) return 0;
+	if (i >= column->size) {
+		strcpy(buffer, " "); // fill with a blank space if the value doesn't exist
+		return 1;
+	}
+	int length = 0;
 	switch (column->data[i]->datatype)
 	{
 		case UINT:
-			sprintf(buffer, "%u", column->data[i]->value.uint_value);
+			length = sprintf(buffer, "%u", column->data[i]->value.uint_value);
 		break;
 		case INT:
-			sprintf(buffer, "%d", column->data[i]->value.int_value);
+			length = sprintf(buffer, "%d", column->data[i]->value.int_value);
 		break;
 		case CHAR:
-			sprintf(buffer, "%c", column->data[i]->value.char_value);
+			length = sprintf(buffer, "%c", column->data[i]->value.char_value);
 		break;
 		case FLOAT:
-			sprintf(buffer, "%f", column->data[i]->value.float_value);
+			length = sprintf(buffer, "%f", column->data[i]->value.float_value);
 		break;
 		case DOUBLE:
-			sprintf(buffer, "%f", column->data[i]->value.double_value);
+			length = sprintf(buffer, "%f", column->data[i]->value.double_value);
 		break;
 		case STRING:
-			sprintf(buffer, "%s", column->data[i]->value.string_value);
+			length = sprintf(buffer, "%s", column->data[i]->value.string_value);
 		break;
 		case STRUCT:
-			sprintf(buffer, "%p", column->data[i]->value.struct_value);
+			length = sprintf(buffer, "%p", column->data[i]->value.struct_value);
 		break;
 		default:
-			break;
+			strcpy(buffer, " ");
+		length = 1;
+		break;
 	}
+	return length;
 }
 
 void free_column(Column *column)
