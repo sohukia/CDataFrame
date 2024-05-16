@@ -46,6 +46,8 @@ void menu_displaying(){
         case 3:
             //TODO: Display a part of the Dataframe columns
             break;
+        case 4:
+            break;
         default:
             printf("Invalid option\n");
             break;
@@ -127,6 +129,77 @@ void menu_usual_options() {
             break;
         case 8:
             //TODO: Display column names
+            break;
+        case 9:
+            break;
+        default:
+            printf("Invalid option\n");
+            break;
     }
 }
 
+void menu_statistics(){
+    int option = 0;
+    printf("Select an option between 1 and 6: \n");
+    printf("\t1. Display the number of rows\n");
+    printf("\t2. Display the number of column\n");
+    printf("\t3. Display the number of cells equal to x\n");
+    printf("\t4. Display the number of cells containing a value greater than x\n");
+    printf("\t5. Display the number of cells containing a value less than x\n");
+    printf("\t6. Go Back\n");
+    scanf("%d", &option);
+    switch (option) {
+        case 1:
+            //TODO: Display the number of rows
+            break;
+        case 2:
+            //TODO: Display the number of column
+            break;
+        case 3:
+            //TODO: Display the number of cells equal to x
+            break;
+        case 4:
+            //TODO: Display the number of cells containing a value greater than x
+            break;
+        case 5:
+            //TODO: Display the number of cells containing a value less than x
+            break;
+        case 6:
+            break;
+        default:
+            printf("Invalid option\n");
+            break;
+    }
+}
+
+void menu(){
+    int option = 0;
+    printf("Welcome to the CDataframe program\n");
+    printf("Select an option between 1 and 4: \n");
+    printf("\t1. Filling the Dataframe\n");
+    printf("\t2. Displaying the Dataframe\n");
+    printf("\t3. Usual operation\n");
+    printf("\t4. Statistics\n");
+    printf("\t5. Exit\n");
+    scanf("%d", &option);
+    switch (option) {
+        case 1:
+            menu_filling();
+            break;
+        case 2:
+            menu_displaying();
+            break;
+        case 3:
+            menu_usual_options();
+            break;
+        case 4:
+            menu_statistics();
+            break;
+        case 5:
+            printf("Goodbye.\n");
+            break;
+        default:
+            printf("Invalid option\n");
+            break;
+    }
+}
