@@ -7,13 +7,19 @@
 #include "../types.h"
 
 /**
- * @brief Creates a new dataframe
+ * @brief Creates a new dataframe with the given types and titles. The columns will be empty.
  * @param types: the types of the columns
  * @param titles: the titles of the columns
  * @param n: the number of columns
  * @return a new dataframe
  */
 DataFrame create_dataframe(const ENUM_TYPE *types, char **titles, unsigned int n);
+
+/**
+ * @brief Creates an empty dataframe
+ * @return a new empty dataframe
+ */
+DataFrame create_empty_dataframe();
 
 /**
  * @brief Inserts a column into a dataframe
@@ -40,5 +46,12 @@ void delete_dataframe(DataFrame *df);
  * @param df: the dataframe to print
  */
 void print_dataframe(const DataFrame *df);
+
+/**
+ * @brief Adds a row to a dataframe
+ * @param df: the dataframe to add the row to
+ * @param data: the data to add
+ */
+void add_dataframe_row(DataFrame *df, COLUMN_TYPE **data);
 
 #endif //CDATAFRAME_CDATAFRAME_H

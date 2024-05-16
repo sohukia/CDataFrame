@@ -28,8 +28,9 @@ void add_data(Column *column, COLUMN_TYPE *data);
  * @param column: The column that contains the value
  * @param i: The index of the value in the column
  * @param buffer: The buffer to store the string
+ * @return the lenght of the value inserted in the buffer
  */
-void convert_value(const Column *column, unsigned long long int i, char *buffer);
+int convert_value(const Column *column, unsigned long long int i, char *buffer);
 
 /**
  * @brief Deletes a column and frees all associated memory
