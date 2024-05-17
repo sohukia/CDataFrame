@@ -15,11 +15,14 @@ void menu_filling(DataFrame *df) {
     scanf("%d", &option);
     switch (option) {
         case 1:
-            //TODO: Create an empty Dataframe
+            *df = create_empty_dataframe();
             menu_filling(df);
             break;
         case 2:
-            //TODO: Hard file a Dataframe
+            char filename[256];
+            printf("Enter the filename: ");
+            scanf("%s", filename);
+            hard_file_dataframe(df, filename);
             menu_filling(df);
             break;
         case 3:
@@ -225,3 +228,4 @@ void menu(DataFrame *df){
             break;
     }
 }
+

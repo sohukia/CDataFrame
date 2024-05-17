@@ -2,6 +2,7 @@
 // Created by sohukia on 3/30/2024.
 //
 
+#include <string.h>
 #include "CDataFrame.h"
 #include "../Column/Column.h"
 #include "../List/List.h"
@@ -96,4 +97,69 @@ void add_dataframe_row(const DataFrame *df, COLUMN_TYPE **data) {
         add_data(columns[j], data[j]);
     }
     free(columns);
+}
+
+void hard_file_dataframe(DataFrame *df, const char *filename) {
+    FILE *file = fopen(filename, "r");
+    if (file == NULL) {
+        printf("Could not open file %s\n", filename);
+        return;
+    }
+
+    char line[256];
+    if (fgets(line, sizeof(line), file) != NULL) {
+        // Assuming the first line contains column names and types separated by a space
+        char *token = strtok(line, " ");
+        while (token != NULL) {
+            char *name = token;
+            token = strtok(NULL, " ");
+            if (token == NULL) {
+                printf("Missing type for column %s\n", name);
+                return;
+            }
+            DataType type = atoi(token); // Assuming the type is an integer
+            Column *column = create_column(name, 10, type); // Assuming max_size is 10
+            insert_column(df, column);
+            token = strtok(NULL, " ");
+        }
+    }
+
+    while (fgets(line, sizeof(line), file) != NULL) {
+        // Assuming the data is separated by a space
+        char *token = strtok(line, " ");
+        COLUMN_TYPE **data = (COLUMN_TYPE **)malloc(sizeof(COLUMN_TYPE *) * get_dataframe_size(df));
+        int i = 0;
+        while (token != NULL) {
+            data[i] = (COLUMN_TYPE *)malloc(sizeof(COLUMN_TYPE));
+            data[i]->datatype = df->columns.head->data->datatype;
+            switch (data[i]->datatype) {
+                case UINT:
+                    data[i]->value.uint_value = (unsigned int)atoi(token);
+                    break;
+                case INT:
+                    data[i]->value.int_value = atoi(token);
+                    break;
+                case CHAR:
+                    data[i]->value.char_value = token[0];
+                    break;
+                case FLOAT:
+                    data[i]->value.float_value = atof(token);
+                    break;
+                case DOUBLE:
+                    data[i]->value.double_value = atof(token);
+                    break;
+                case STRING:
+                    data[i]->value.string_value = strdup(token);
+                    break;
+                default:
+                    printf("Invalid type\n");
+                    return;
+            }
+            token = strtok(NULL, " ");
+            i++;
+        }
+        add_dataframe_row(df, data);
+    }
+
+    fclose(file);
 }

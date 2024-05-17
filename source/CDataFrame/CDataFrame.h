@@ -54,4 +54,11 @@ void print_dataframe(const DataFrame *df);
  */
 void add_dataframe_row(const DataFrame *df, COLUMN_TYPE **data);
 
+/**
+ * @brief Gets the number of rows in a dataframe
+ * @param df: the dataframe to get the number of rows from
+ * @return the number of rows in the dataframe
+ */
+void hard_file_dataframe(DataFrame *df, const char *filename);
+
 #endif //CDATAFRAME_CDATAFRAME_H
