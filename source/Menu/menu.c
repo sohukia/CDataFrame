@@ -21,7 +21,9 @@ void menu_filling(DataFrame *df) {
             menu_filling(df);
             break;
         case 2:
-            //TODO: Hard file a Dataframe
+            fill_dataframe_with_random_numbers(df);
+            printf("You just fill your Dataframe with random numbers.\n");
+            menu_filling(df);
             break;
         case 3:
             menu(df);

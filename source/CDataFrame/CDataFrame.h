@@ -59,7 +59,7 @@ void add_dataframe_row(const DataFrame *df, COLUMN_TYPE **data);
  * @param df: the dataframe to get the number of rows from
  * @return the number of rows in the dataframe
  */
-void hard_file_dataframe(DataFrame *df, const char *filename);
+void fill_dataframe_with_random_numbers(DataFrame *df);
 
 /**
  * @brief Gets the number of rows in a dataframe

@@ -2,6 +2,8 @@
 // Created by sohukia on 3/30/2024.
 //
 
+#include <time.h>
+#include <stdlib.h>
 #include <string.h>
 #include "CDataFrame.h"
 #include "../Column/Column.h"
@@ -99,69 +101,44 @@ void add_dataframe_row(const DataFrame *df, COLUMN_TYPE **data) {
     free(columns);
 }
 
-void hard_file_dataframe(DataFrame *df, const char *filename) {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        printf("Could not open file %s\n", filename);
-        return;
-    }
+void fill_dataframe_with_random_numbers(DataFrame *df) {
+    srand(time(0)); // Use current time as seed for random generator
 
-    char line[256];
-    if (fgets(line, sizeof(line), file) != NULL) {
-        // Assuming the first line contains column names and types separated by a space
-        char *token = strtok(line, " ");
-        while (token != NULL) {
-            char *name = token;
-            token = strtok(NULL, " ");
-            if (token == NULL) {
-                printf("Missing type for column %s\n", name);
-                return;
-            }
-            DataType type = atoi(token); // Assuming the type is an integer
-            Column *column = create_column(name, 10, type); // Assuming max_size is 10
-            insert_column(df, column);
-            token = strtok(NULL, " ");
-        }
-    }
-
-    while (fgets(line, sizeof(line), file) != NULL) {
-        // Assuming the data is separated by a space
-        char *token = strtok(line, " ");
-        COLUMN_TYPE **data = (COLUMN_TYPE **)malloc(sizeof(COLUMN_TYPE *) * get_dataframe_size(df));
-        int i = 0;
-        while (token != NULL) {
-            data[i] = (COLUMN_TYPE *)malloc(sizeof(COLUMN_TYPE));
-            data[i]->datatype = df->columns.head->data->datatype;
-            switch (data[i]->datatype) {
+    Node* current = df->columns.head;
+    while (current != NULL) {
+        Column* column = current->data;
+        for (int i = 0; i < column->max_size; i++) {
+            COLUMN_TYPE* value = (COLUMN_TYPE*)malloc(sizeof(COLUMN_TYPE));
+            value->datatype = column->datatype;
+            switch (column->datatype) {
                 case UINT:
-                    data[i]->value.uint_value = (unsigned int)atoi(token);
+                    value->value.uint_value = rand();
                     break;
                 case INT:
-                    data[i]->value.int_value = atoi(token);
+                    value->value.int_value = rand();
                     break;
                 case CHAR:
-                    data[i]->value.char_value = token[0];
+                    value->value.char_value = 'A' + (rand() % 26); // Generate a random uppercase letter
                     break;
                 case FLOAT:
-                    data[i]->value.float_value = atof(token);
+                    value->value.float_value = (float)rand() / (float)(RAND_MAX);
                     break;
                 case DOUBLE:
-                    data[i]->value.double_value = atof(token);
+                    value->value.double_value = (double)rand() / (double)(RAND_MAX);
                     break;
                 case STRING:
-                    data[i]->value.string_value = strdup(token);
+                    // For simplicity, let's fill the string with a single random character
+                    value->value.string_value = (char*)malloc(2 * sizeof(char));
+                    value->value.string_value[0] = 'A' + (rand() % 26);
+                    value->value.string_value[1] = '\0';
                     break;
                 default:
-                    printf("Invalid type\n");
-                    return;
+                    break;
             }
-            token = strtok(NULL, " ");
-            i++;
+            column->data[i] = value;
         }
-        add_dataframe_row(df, data);
+        current = current->next;
     }
-
-    fclose(file);
 }
 
 void display_whole_dataframe(DataFrame *df) {
