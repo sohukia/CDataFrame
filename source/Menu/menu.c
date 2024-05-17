@@ -11,6 +11,7 @@ void menu_filling(DataFrame *df) {
     printf("Select an option between 1 and 3: \n");
     printf("\t1. Create an empty Dataframe\n");
     printf("\t2. Hard file a Dataframe\n");
+    printf("\t3. Go back\n");
     scanf("%d", &option);
     switch (option) {
         case 1:
@@ -18,6 +19,9 @@ void menu_filling(DataFrame *df) {
             break;
         case 2:
             //TODO: Hard file a Dataframe
+            break;
+        case 3:
+            menu();
             break;
         default:
             printf("Invalid option\n");
@@ -44,6 +48,7 @@ void menu_displaying(DataFrame *df) {
             //TODO: Display a part of the Dataframe columns
             break;
         case 4:
+            menu();
             break;
         default:
             printf("Invalid option\n");
@@ -56,9 +61,9 @@ void menu_create_column(DataFrame *df) {
     unsigned int max_size;
     DataType datatype;
     printf("Enter the title of the column: ");
-    scanf("%s", title);
+    scanf("%s\n", title);
     printf("Enter the maximum size of the column: ");
-    scanf("%u", &max_size);
+    scanf("%u\n", &max_size);
     printf("Enter the datatype of the column (1=UINT, 2=INT, 3=CHAR, 4=FLOAT, 5=DOUBLE, 6=STRING): ");
     int choice;
     scanf("%d", &choice);
@@ -128,6 +133,7 @@ void menu_usual_options(DataFrame *df) {
             //TODO: Display column names
             break;
         case 9:
+            menu();
             break;
         default:
             printf("Invalid option\n");
@@ -162,6 +168,7 @@ void menu_statistics(DataFrame *df) {
             //TODO: Display the number of cells containing a value less than x
             break;
         case 6:
+            menu();
             break;
         default:
             printf("Invalid option\n");
