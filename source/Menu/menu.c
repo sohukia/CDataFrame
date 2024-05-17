@@ -44,15 +44,25 @@ void menu_displaying(DataFrame *df) {
     scanf("%d", &option);
     switch (option) {
         case 1:
-            //TODO: Display your whole Dataframe
+            display_whole_dataframe(df);
             menu_displaying(df);
             break;
         case 2:
-            //TODO: Display a part of the Dataframe rows
+            int start_row, end_row;
+            printf("Enter the start row index: ");
+            scanf("%d", &start_row);
+            printf("Enter the end row index: ");
+            scanf("%d", &end_row);
+            display_part_of_dataframe_rows(df, start_row, end_row);
             menu_displaying(df);
             break;
         case 3:
-            //TODO: Display a part of the Dataframe columns
+            int start_col, end_col;
+            printf("Enter the start column index: ");
+            scanf("%d", &start_col);
+            printf("Enter the end column index: ");
+            scanf("%d", &end_col);
+            display_part_of_dataframe_columns(df, start_col, end_col);
             menu_displaying(df);
             break;
         case 4:

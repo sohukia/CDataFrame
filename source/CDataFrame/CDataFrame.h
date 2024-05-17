@@ -61,4 +61,25 @@ void add_dataframe_row(const DataFrame *df, COLUMN_TYPE **data);
  */
 void hard_file_dataframe(DataFrame *df, const char *filename);
 
+/**
+ * @brief Gets the number of rows in a dataframe
+ * @param df: the dataframe to get the number of rows from
+ * @return the number of rows in the dataframe
+ */
+void display_whole_dataframe(DataFrame *df);
+
+/**
+ * @brief Gets the number of rows in a dataframe
+ * @param df: the dataframe to get the number of rows from
+ * @return the number of rows in the dataframe
+ */
+void display_part_of_dataframe_rows(DataFrame *df, int start, int end);
+
+/**
+ * @brief Gets the number of rows in a dataframe
+ * @param df: the dataframe to get the number of rows from
+ * @return the number of rows in the dataframe
+ */
+void display_part_of_dataframe_columns(DataFrame *df, int start, int end);
+
 #endif //CDATAFRAME_CDATAFRAME_H
