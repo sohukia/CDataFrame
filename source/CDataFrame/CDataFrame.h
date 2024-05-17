@@ -22,6 +22,12 @@ DataFrame create_dataframe(const ENUM_TYPE *types, char **titles, unsigned int n
 DataFrame create_empty_dataframe();
 
 /**
+ * @brief Updates the indexes of the columns in a dataframe
+ * @param df: the dataframe to update
+ */
+void update_column_indexes(DataFrame *df);
+
+/**
  * @brief Inserts a column into a dataframe
  * @param df: the dataframe in which to insert the column
  * @param column: the column to insert
@@ -34,6 +40,13 @@ void insert_column(DataFrame *df, Column *column);
  * @param title: the column title to delete
  */
 void delete_column(DataFrame *df, char title[]);
+
+/**
+ * @brief Deletes a row from a dataframe
+ * @param df: the dataframe from which to delete the row
+ * @param index: the index of the row to delete
+ */
+void delete_row(DataFrame *df, unsigned int index);
 
 /**
  * @brief Deletes a dataframe and frees all associated memory

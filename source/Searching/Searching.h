@@ -71,4 +71,12 @@ int get_dataframe_size(const DataFrame *df);
  */
 int get_dataframe_max_rows(const DataFrame *df);
 
+/**
+ * @brief get the column at the specified index
+ * @param df the dataframe to get the column from
+ * @param index the index of the column to get
+ * @return the column at the specified index
+ */
+Column *get_column(const DataFrame *df, int index);
+
 #endif //CDATAFRAME_SEARCHING_H

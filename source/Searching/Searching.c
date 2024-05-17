@@ -420,3 +420,23 @@ int get_dataframe_max_rows(const DataFrame *df) {
     }
     return max_rows;
 }
+
+Column *get_column(const DataFrame *df, int index) {
+    if (index < 0)
+    {
+        printf("Error: invalid index\n");
+        return NULL;
+    }
+
+    Node *current = df->columns.head;
+    for (int i = 0; i < index; i++)
+    {
+        if (current == NULL)
+        {
+            printf("Error: index out of bounds\n");
+            return NULL;
+        }
+        current = current->next;
+    }
+    return current->data;
+}

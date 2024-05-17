@@ -7,13 +7,11 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define REALLOC_SIZE 256
-
-Column* create_column(const char *title, const unsigned int max_size, const DataType datatype)
+Column* create_column(const char *title, const unsigned int max_size, const DataType datatype, const unsigned long long index)
 {
 	Column *column = malloc(sizeof(Column));
 	if (column == NULL) return NULL;
-	column->index = (unsigned long long *)malloc(sizeof(unsigned long long));
+	column->index = index;
 	column->title = strdup(title);
 	column->max_size = max_size;
 	column->size = 0;
@@ -21,7 +19,6 @@ Column* create_column(const char *title, const unsigned int max_size, const Data
 	column->data = (COLUMN_TYPE **)malloc(sizeof(COLUMN_TYPE *) * max_size);
 	if (column->data == NULL) // in case where the memory allocation fails
 	{
-		free(column->index);
 		free(column->title);
 		free(column);
 		return NULL;
@@ -44,7 +41,7 @@ int convert_value(const Column *column, const unsigned long long int i, char *bu
 		strcpy(buffer, " "); // fill with a blank space if the value doesn't exist
 		return 1;
 	}
-	int length = 0;
+	int length;
 	switch (column->data[i]->datatype)
 	{
 		case UINT:
@@ -79,7 +76,6 @@ int convert_value(const Column *column, const unsigned long long int i, char *bu
 void free_column(Column *column)
 {
 	if (column == NULL) return;
-	if (column->index != NULL) free(column->index);
 	if (column->title != NULL) free(column->title);
 	if (column->data != NULL)
 	{

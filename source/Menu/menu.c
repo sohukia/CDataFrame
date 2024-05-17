@@ -7,13 +7,11 @@
 #include <stdlib.h>
 #include "../CDataFrame/CDataFrame.h"
 #include "../Column/Column.h"
+#include "../Searching/Searching.h"
 
 void menu_filling(DataFrame *df) {
     int option = 0;
-    printf("Select an option between 1 and 3: \n");
-    printf("\t1. Create an empty Dataframe\n");
-    printf("\t2. Hard file a Dataframe\n");
-    printf("\t3. Go back\n");
+    printf("Select an option between 1 and 3: \n\t1. Create an empty Dataframe\n\t2. Hard file a Dataframe\n\t3. Go back\n");
     scanf("%d", &option);
     switch (option) {
         case 1:
@@ -36,16 +34,11 @@ void menu_filling(DataFrame *df) {
 
 void menu_displaying(DataFrame *df) {
     int option = 0;
-    printf("Select an option between 1 and 4: \n");
-    printf("\t1. Display your whole Dataframe\n");
-    printf("\t2. Display a part of the Dataframe rows\n");
-    printf("\t3. Display a part of the Dataframe columns\n");
-    printf("\t4. Go back\n");
+    printf("Select an option between 1 and 4: \n\t1. Display your whole Dataframe\n\t2. Display a part of the Dataframe rows\n\t3. Display a part of the Dataframe columns\n\t4. Go back\n");
     scanf("%d", &option);
     switch (option) {
         case 1:
-            display_whole_dataframe(df);
-            menu_displaying(df);
+            //TODO: Display your whole Dataframe
             break;
         case 2:
             int start_row, end_row;
@@ -109,7 +102,8 @@ void menu_create_column(DataFrame *df) {
             return;
 
     }
-    //TODO : insert column in daataframe
+    Column *column = create_column(title, max_size, datatype);
+    insert_column(df, column);
 }
 
 void menu_usual_options(DataFrame *df) {
@@ -236,5 +230,48 @@ void menu(DataFrame *df){
         default:
             printf("Invalid option\n");
             break;
+    }
+}
+
+void create_row_from_input(DataFrame *df) {
+    int num_columns = get_dataframe_size(df);
+    void **values = (void **)malloc(sizeof(void *) * num_columns);
+    for (int i = 0; i < num_columns; i++) {
+        Column *column = get_column(df, i);
+        switch (column->datatype) {
+            case UINT:
+                values[i] = (void *)malloc(sizeof(unsigned int));
+                printf("Enter a value for column %s: ", column->title);
+                scanf("%u", (unsigned int *)values[i]);
+                break;
+            case INT:
+                values[i] = (void *)malloc(sizeof(int));
+                printf("Enter a value for column %s: ", column->title);
+                scanf("%d", (int *)values[i]);
+                break;
+            case CHAR:
+                values[i] = (void *)malloc(sizeof(char));
+                printf("Enter a value for column %s: ", column->title);
+                scanf("%c", (char *)values[i]);
+                break;
+            case FLOAT:
+                values[i] = (void *)malloc(sizeof(float));
+                printf("Enter a value for column %s: ", column->title);
+                scanf("%f", (float *)values[i]);
+                break;
+            case DOUBLE:
+                values[i] = (void *)malloc(sizeof(double));
+                printf("Enter a value for column %s: ", column->title);
+                scanf("%lf", (double *)values[i]);
+                break;
+            case STRING:
+                values[i] = (void *)malloc(sizeof(char) * column->max_size);
+                printf("Enter a value for column %s: ", column->title);
+                scanf("%s", (char *)values[i]);
+                break;
+            default:
+                printf("Invalid datatype\n");
+                return;
+        }
     }
 }

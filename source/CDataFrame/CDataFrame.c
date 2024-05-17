@@ -14,7 +14,7 @@ DataFrame create_dataframe(const ENUM_TYPE *types, char **titles, const unsigned
     DataFrame df;
     df.columns = create_list();
     for (unsigned int i = 0; i < n; i++) {
-        Column* column = create_column(titles[i], 10, types[i]);
+        Column* column = create_column(titles[i], 10, types[i], i);
         insert_in_list(&df.columns, column);
     }
     return df;
@@ -28,10 +28,27 @@ DataFrame create_empty_dataframe() {
 
 void insert_column(DataFrame *df, Column *column) {
     insert_in_list(&df->columns, column);
+    update_column_indexes(df);
 }
 
 void delete_column(DataFrame *df, char title[]) {
     delete_node(&df->columns, search_by_name(df, title));
+    update_column_indexes(df);
+}
+
+void delete_row(const DataFrame *df, const unsigned int index) {
+    const Node* current = df->columns.head;
+    while (current != NULL) {
+        Column* column = current->data;
+        if (index < column->size) {
+            free(column->data[index]);
+            for (unsigned int i = index; i < column->size - 1; i++) {
+                column->data[i] = column->data[i + 1];
+            }
+            column->size--;
+        }
+        current = current->next;
+    }
 }
 
 void delete_dataframe(DataFrame *df) {
@@ -54,7 +71,7 @@ void print_dataframe(const DataFrame *df) {
     const Node* current = df->columns.head;
     int column_index = 0;
     while (current != NULL) {
-        printf("%s\t", current->data->title);
+        printf("%llu %s\t", current->data->index, current->data->title);
         for (int i = 0; i < size; i++) {
             const int length = convert_value(current->data, i, buffers[column_index][i]);
             if (length > max_lengths[column_index]) {

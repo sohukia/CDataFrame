@@ -29,7 +29,7 @@ typedef struct
 
 struct column
 {
-    unsigned long long *index;
+    unsigned long long index;
 
     char *title;
     unsigned int max_size;
