@@ -4,17 +4,15 @@
 
 #include "menu.h"
 #include <stdio.h>
-#include <stdlib.h>
-#include "../CDataFrame/CDataFrame.h"
 #include "../Column/Column.h"
 
-void menu_filling(){
+void menu_filling(DataFrame *df) {
     int option = 0;
-    printf("select an option between 1 and 3: \n");
+    printf("Select an option between 1 and 3: \n");
     printf("\t1. Create an empty Dataframe\n");
     printf("\t2. Hard file a Dataframe\n");
     scanf("%d", &option);
-    switch (option){
+    switch (option) {
         case 1:
             //TODO: Create an empty Dataframe
             break;
@@ -27,7 +25,7 @@ void menu_filling(){
     }
 }
 
-void menu_displaying(){
+void menu_displaying(DataFrame *df) {
     int option = 0;
     printf("Select an option between 1 and 4: \n");
     printf("\t1. Display your whole Dataframe\n");
@@ -35,7 +33,7 @@ void menu_displaying(){
     printf("\t3. Display a part of the Dataframe columns\n");
     printf("\t4. Go back\n");
     scanf("%d", &option);
-    switch (option){
+    switch (option) {
         case 1:
             //TODO: Display your whole Dataframe
             break;
@@ -53,7 +51,7 @@ void menu_displaying(){
     }
 }
 
-void menu_create_column() {
+void menu_create_column(DataFrame *df) {
     char title[256];
     unsigned int max_size;
     DataType datatype;
@@ -91,7 +89,7 @@ void menu_create_column() {
     //TODO : insert column in daataframe
 }
 
-void menu_usual_options() {
+void menu_usual_options(DataFrame *df) {
     int option = 0;
     printf("Select an option between 1 and 9: \n");
     printf("\t1. Add a row of values\n");
@@ -112,7 +110,7 @@ void menu_usual_options() {
             //TODO: Delete a row of values
             break;
         case 3:
-            menu_create_column();
+            menu_create_column(df);
             break;
         case 4:
             //TODO: Delete a column of values
@@ -137,7 +135,7 @@ void menu_usual_options() {
     }
 }
 
-void menu_statistics(){
+void menu_statistics(DataFrame *df) {
     int option = 0;
     printf("Select an option between 1 and 6: \n");
     printf("\t1. Display the number of rows\n");
@@ -171,7 +169,7 @@ void menu_statistics(){
     }
 }
 
-void menu(){
+void menu(DataFrame *df){
     int option = 0;
     printf("Welcome to the CDataframe program\n");
     printf("Select an option between 1 and 4: \n");
@@ -183,16 +181,16 @@ void menu(){
     scanf("%d", &option);
     switch (option) {
         case 1:
-            menu_filling();
+            menu_filling(df);
             break;
         case 2:
-            menu_displaying();
+            menu_displaying(df);
             break;
         case 3:
-            menu_usual_options();
+            menu_usual_options(df);
             break;
         case 4:
-            menu_statistics();
+            menu_statistics(df);
             break;
         case 5:
             printf("Goodbye.\n");
