@@ -8,6 +8,6 @@
 int main() {
 	DataFrame df = create_empty_dataframe();
 	Column *column1 = create_column("Column 1", 10, INT);
-    menu();
+    menu(&df);
 	return 0;
 }

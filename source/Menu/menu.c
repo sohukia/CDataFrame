@@ -4,6 +4,8 @@
 
 #include "menu.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include "../CDataFrame/CDataFrame.h"
 #include "../Column/Column.h"
 
 void menu_filling(DataFrame *df) {
@@ -15,13 +17,14 @@ void menu_filling(DataFrame *df) {
     scanf("%d", &option);
     switch (option) {
         case 1:
-            //TODO: Create an empty Dataframe
+            *df = create_empty_dataframe();
+            menu_filling(df);
             break;
         case 2:
             //TODO: Hard file a Dataframe
             break;
         case 3:
-            menu();
+            menu(df);
             break;
         default:
             printf("Invalid option\n");
@@ -39,16 +42,29 @@ void menu_displaying(DataFrame *df) {
     scanf("%d", &option);
     switch (option) {
         case 1:
-            //TODO: Display your whole Dataframe
+            display_whole_dataframe(df);
+            menu_displaying(df);
             break;
         case 2:
-            //TODO: Display a part of the Dataframe rows
+            int start_row, end_row;
+            printf("Enter the start row index: ");
+            scanf("%d", &start_row);
+            printf("Enter the end row index: ");
+            scanf("%d", &end_row);
+            display_part_of_dataframe_rows(df, start_row, end_row);
+            menu_displaying(df);
             break;
         case 3:
-            //TODO: Display a part of the Dataframe columns
+            int start_col, end_col;
+            printf("Enter the start column index: ");
+            scanf("%d", &start_col);
+            printf("Enter the end column index: ");
+            scanf("%d", &end_col);
+            display_part_of_dataframe_columns(df, start_col, end_col);
+            menu_displaying(df);
             break;
         case 4:
-            menu();
+            menu(df);
             break;
         default:
             printf("Invalid option\n");
@@ -110,30 +126,38 @@ void menu_usual_options(DataFrame *df) {
     switch (option) {
         case 1:
             //TODO: Add a row of values
+            menu_usual_options(df);
             break;
         case 2:
             //TODO: Delete a row of values
+            menu_usual_options(df);
             break;
         case 3:
             menu_create_column(df);
+            menu_usual_options(df);
             break;
         case 4:
             //TODO: Delete a column of values
+            menu_usual_options(df);
             break;
         case 5:
             //TODO: Rename the column
+            menu_usual_options(df);
             break;
         case 6:
             //TODO: check the existence of a value
+            menu_usual_options(df);
             break;
         case 7:
             //TODO: Access/replace the value in a CDataframe cell using its row and column number
+            menu_usual_options(df);
             break;
         case 8:
             //TODO: Display column names
+            menu_usual_options(df);
             break;
         case 9:
-            menu();
+            menu(df);
             break;
         default:
             printf("Invalid option\n");
@@ -154,21 +178,26 @@ void menu_statistics(DataFrame *df) {
     switch (option) {
         case 1:
             //TODO: Display the number of rows
+            menu_statistics(df);
             break;
         case 2:
             //TODO: Display the number of column
+            menu_statistics(df);
             break;
         case 3:
             //TODO: Display the number of cells equal to x
+            menu_statistics(df);
             break;
         case 4:
             //TODO: Display the number of cells containing a value greater than x
+            menu_statistics(df);
             break;
         case 5:
             //TODO: Display the number of cells containing a value less than x
+            menu_statistics(df);
             break;
         case 6:
-            menu();
+            menu(df);
             break;
         default:
             printf("Invalid option\n");
