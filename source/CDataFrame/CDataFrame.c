@@ -10,6 +10,7 @@
 #include "../List/List.h"
 #include "../Searching/Searching.h"
 
+
 DataFrame create_dataframe(const ENUM_TYPE *types, char **titles, const unsigned int n) {
     DataFrame df;
     df.columns = create_list();
@@ -54,7 +55,10 @@ void print_dataframe(const DataFrame *df) {
     const Node* current = df->columns.head;
     int column_index = 0;
     while (current != NULL) {
-        printf("%s\t", current->data->title);
+        const int length = strlen(current->data->title);
+        if (length > max_lengths[column_index]) {
+            max_lengths[column_index] = length;
+        }
         for (int i = 0; i < size; i++) {
             const int length = convert_value(current->data, i, buffers[column_index][i]);
             if (length > max_lengths[column_index]) {
@@ -64,17 +68,65 @@ void print_dataframe(const DataFrame *df) {
         current = current->next;
         column_index++;
     }
-    printf("\n"); // print a newline after the column titles
 
-    // print the dataframe as a table
-    for (int i = 0; i < size; i++) {
-        for (int j = 0; j < num_columns; j++) {
-            printf("%-*s\t", max_lengths[j], buffers[j][i]); // print the values of each column
+    // Reset the current pointer to the head of the list
+    current = df->columns.head;
+
+    // Print the table header
+    printf("+");
+    for (int j = 0; j < num_columns; j++) {
+        printf("-");
+        for (int i = 0; i < max_lengths[j] + 2; i++) {
+            printf("-");
         }
-        printf("\n"); // print a newline after each row
+    }
+    printf("+\n");
+
+    // Print the column titles
+    printf("|");
+    for (int j = 0; j < num_columns; j++) {
+        printf(" ");
+        printf("%-*s", max_lengths[j], current->data->title); // print the column titles
+
+        printf(" ");
+        printf("|");
+        current = current->next; // Move to the next column title
+    }
+    printf("\n");
+
+    // Print the table separator
+    printf("+");
+    for (int j = 0; j < num_columns; j++) {
+        printf("-");
+        for (int i = 0; i < max_lengths[j] + 2; i++) {
+            printf("-");
+        }
+    }
+    printf("+\n");
+
+    // Print the dataframe as a table
+    for (int i = 0; i < size; i++) {
+        printf("|");
+        for (int j = 0; j < num_columns; j++) {
+            printf(" ");
+            printf("%-*s", max_lengths[j], buffers[j][i]);
+            printf(" ");
+            printf("|");
+        }
+        printf("\n");
     }
 
-    // free the memory allocated for the buffers
+    // Print the table footer
+    printf("+");
+    for (int j = 0; j < num_columns; j++) {
+        printf("-");
+        for (int i = 0; i < max_lengths[j] + 2; i++) {
+            printf("-");
+        }
+    }
+    printf("+\n");
+
+    // Free the memory allocated for the buffers
     for (int j = 0; j < num_columns; j++) {
         for (int i = 0; i < size; i++) {
             free(buffers[j][i]);
@@ -84,6 +136,9 @@ void print_dataframe(const DataFrame *df) {
     free(buffers);
     free(max_lengths);
 }
+
+
+
 
 void add_dataframe_row(const DataFrame *df, COLUMN_TYPE **data) {
     const int num_columns = get_dataframe_size(df);
@@ -96,7 +151,7 @@ void add_dataframe_row(const DataFrame *df, COLUMN_TYPE **data) {
         i++;
     }
     for (int j = 0; j < num_columns; j++) {
-        add_data(columns[j], data[j]);
+        add_data((Column *) columns[j]->data, data[j]);
     }
     free(columns);
 }

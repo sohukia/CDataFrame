@@ -4,6 +4,7 @@
 
 #include "List.h"
 #include "../Column/Column.h"
+#include "../types.h"
 
 List create_list() {
     List list;
