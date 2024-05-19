@@ -15,7 +15,7 @@ DataFrame create_dataframe(const ENUM_TYPE *types, char **titles, const unsigned
     DataFrame df;
     df.columns = create_list();
     for (unsigned int i = 0; i < n; i++) {
-        Column* column = create_column(titles[i], 10, types[i]);
+        Column* column = create_column(titles[i], 10, types[i], i);
         insert_in_list(&df.columns, column);
     }
     return df;
@@ -190,7 +190,7 @@ void fill_dataframe_with_random_numbers(DataFrame *df) {
                 default:
                     break;
             }
-            column->data[i] = value;
+            column->data[i] = *value;
         }
         current = current->next;
     }

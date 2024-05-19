@@ -29,13 +29,13 @@ typedef struct
 
 struct column
 {
-    unsigned long long *index;
+    unsigned long long index;
 
     char *title;
     unsigned int max_size;
     unsigned int size;
     DataType datatype;
-    COLUMN_TYPE **data;
+    COLUMN_TYPE *data;
 };
 typedef struct column Column;
 

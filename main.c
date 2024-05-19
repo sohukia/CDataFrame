@@ -10,11 +10,11 @@ int main() {
     // Create DataFrame
     DataFrame df = create_empty_dataframe();
 
-    Column* column1 = create_column("Column 1", 10, INT);
-    Column* column2 = create_column("Column 2", 10, FLOAT);
-    Column* column3 = create_column("Column 3", 10, STRING);
+    Column* column1 = create_column("Column 1", 10, INT, 0);
+    Column* column2 = create_column("Column 2", 10, FLOAT, 1);
+    Column* column3 = create_column("Column 3", 10, STRING, 2);
 
-    /* Exemple of use : (juste enleve ce commentaire et tu verras)
+    ///* Exemple of use : (juste enleve ce commentaire et tu verras)
     // Insert columns into DataFrame
     insert_column(&df, column1);
     insert_column(&df, column2);
@@ -33,10 +33,7 @@ int main() {
     print_dataframe(&df);
 
     // Cleanup
-    free_column(column1);
-    free_column(column2);
-    free_column(column3);
     delete_dataframe(&df);
-    */
+    //*/
     return 0;
 }
