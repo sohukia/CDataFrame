@@ -3,6 +3,7 @@
 //
 
 #include "Column.h"
+#include "../Searching/Searching.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -108,4 +109,19 @@ void print_column(const Column *column)
 		convert_value(column, i, buffer);
 		printf("%s\n", buffer);
 	}
+}
+
+void add_row(DataFrame *df, COLUMN_TYPE **data) {
+    // Vérifiez que le nombre de données correspond au nombre de colonnes
+    if (get_dataframe_size(df) != df->columns.head->data->max_size) {
+        printf("Error: The number of data does not match the number of columns\n");
+        return;
+    }
+
+    // Parcourez les colonnes du DataFrame et ajoutez les données
+    Node* current = df->columns.head;
+    for (int i = 0; i < get_dataframe_size(df); i++) {
+        add_data((Column *) current->data, data[i]);
+        current = current->next;
+    }
 }

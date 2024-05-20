@@ -44,4 +44,6 @@ void free_column(Column *column);
  */
 void print_column(const Column *column);
 
+void add_row(DataFrame *df, COLUMN_TYPE **data);
+
 #endif //CDATAFRAME_COLUMN_H
