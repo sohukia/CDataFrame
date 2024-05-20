@@ -28,6 +28,41 @@ void insert_in_list(List *list, Column *column) {
     }
 }
 
+void insert_in_list_at_index(List *list, Column *column, unsigned int index) {
+    Node* newNode = malloc(sizeof(Node));
+    newNode->data = column;
+    if (index == 0) {
+        newNode->next = list->head;
+        newNode->prev = NULL;
+        if (list->head != NULL) {
+            list->head->prev = newNode;
+        }
+        list->head = newNode;
+        if (list->tail == NULL) {
+            list->tail = newNode;
+        }
+        return;
+    }
+    Node* current = list->head;
+    for (unsigned int i = 0; i < index - 1; i++) {
+        if (current == NULL) {
+            return;
+        }
+        current = current->next;
+    }
+    if (current == NULL) {
+        return;
+    }
+    newNode->next = current->next;
+    newNode->prev = current;
+    current->next = newNode;
+    if (newNode->next == NULL) {
+        list->tail = newNode;
+    } else {
+        newNode->next->prev = newNode;
+    }
+}
+
 void delete_node(List *list, Node *node) {
     if (node == NULL) return;
     if (node == list->head) {

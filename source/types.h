@@ -7,7 +7,7 @@
 
 typedef enum
 {
-    NULLVAL = 1, UINT, INT, CHAR, FLOAT, DOUBLE, STRING, STRUCT
+    NULLVAL = 0, UINT, INT, CHAR, FLOAT, DOUBLE, STRING
 } DataType;
 
 typedef union
@@ -18,7 +18,6 @@ typedef union
     float float_value;
     double double_value;
     char* string_value;
-    void* struct_value;
 } Value;
 
 typedef struct

@@ -58,7 +58,7 @@ int convert_value(const Column *column, const unsigned long long int i, char *bu
 		strcpy(buffer, " "); // fill with a blank space if the value doesn't exist
 		return 1;
 	}
-	int length = 0;
+	int length;
 	switch (column->data[i].datatype)
 	{
 		case UINT:
@@ -78,9 +78,6 @@ int convert_value(const Column *column, const unsigned long long int i, char *bu
 		break;
 		case STRING:
 			length = sprintf(buffer, "%s", column->data[i].value.string_value);
-		break;
-		case STRUCT:
-			length = sprintf(buffer, "%p", column->data[i].value.struct_value);
 		break;
 		default:
 			strcpy(buffer, " ");

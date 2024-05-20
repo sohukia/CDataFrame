@@ -25,7 +25,7 @@ DataFrame create_empty_dataframe();
  * @brief Updates the indexes of the columns in a dataframe
  * @param df: the dataframe to update
  */
-void update_column_indexes(DataFrame *df);
+void update_column_indexes(const DataFrame *df);
 
 /**
  * @brief Inserts a column into a dataframe
@@ -33,6 +33,14 @@ void update_column_indexes(DataFrame *df);
  * @param column: the column to insert
  */
 void insert_column(DataFrame *df, Column *column);
+
+/**
+ * @brief inserts a column into a dataframe at a specific index
+ * @param df: the dataframe in which to insert the column
+ * @param column: the column to insert
+ * @param index: the index at which to insert the column
+ */
+void insert_column_at_index(DataFrame *df, Column *column, unsigned int index);
 
 /**
  * @brief Deletes a column from a dataframe
@@ -65,34 +73,31 @@ void print_dataframe(const DataFrame *df);
  * @param df: the dataframe to add the row to
  * @param data: the data to add
  */
-void add_dataframe_row(const DataFrame *df, COLUMN_TYPE **data);
+void add_dataframe_row(const DataFrame *df, COLUMN_TYPE *data);
 
 /**
  * @brief Gets the number of rows in a dataframe
  * @param df: the dataframe to get the number of rows from
  * @return the number of rows in the dataframe
  */
-void fill_dataframe_with_random_numbers(DataFrame *df);
+void fill_dataframe_with_random_numbers(const DataFrame *df);
 
 /**
  * @brief Gets the number of rows in a dataframe
  * @param df: the dataframe to get the number of rows from
+ * @param start: the start index
+ * @param end: the end index
  * @return the number of rows in the dataframe
  */
-void display_whole_dataframe(DataFrame *df);
+void display_part_of_dataframe_rows(const DataFrame *df, int start, int end);
 
 /**
  * @brief Gets the number of rows in a dataframe
  * @param df: the dataframe to get the number of rows from
+ * @param start: the start index
+ * @param end: the end index
  * @return the number of rows in the dataframe
  */
-void display_part_of_dataframe_rows(DataFrame *df, int start, int end);
-
-/**
- * @brief Gets the number of rows in a dataframe
- * @param df: the dataframe to get the number of rows from
- * @return the number of rows in the dataframe
- */
-void display_part_of_dataframe_columns(DataFrame *df, int start, int end);
+void display_part_of_dataframe_columns(const DataFrame *df, int start, int end);
 
 #endif //CDATAFRAME_CDATAFRAME_H

@@ -7,39 +7,39 @@
 #include "../CDataFrame/CDataFrame.h"
 
 /**
- * @brief Fills the Dataframe
- * @param df: the dataframe to fill
+ * @brief Create a dataframe filled by the user
+ * @return the dataframe created
  */
-void menu_filling(DataFrame *df);
+DataFrame menu_create_dataframe();
 
 /**
- * @brief Displays the Dataframe
- * @param df: the dataframe to display
+ * @brief Create a dataframe filled with random data
+ * @return the dataframe created
  */
-void menu_displaying(DataFrame *df);
+DataFrame menu_create_random_dataframe();
 
 /**
- * @brief Creates a column
- * @param df: the dataframe to create the column in
+ * @brief Create a dataframe with user's choice set of data
+ * @return the dataframe created
  */
-void menu_create_column(DataFrame *df);
+DataFrame menu_begin_fill_operation();
 
 /**
- * @brief Usual options
+ * @brief Add a row to the dataframe
+ * @param df: the dataframe to add the row to
+ */
+void menu_add_row(const DataFrame *df);
+
+/**
+ * @brief Usual operations of a dataframe such as adding, deleting, and renaming a column or a row
+ * searching for a value, display the column names
  * @param df: the dataframe to use
  */
-void menu_usual_options(DataFrame *df);
+void menu_usual_operations(DataFrame *df);
 
 /**
- * @brief Usual statistics
- * @param df: the dataframe to use
+ * @brief Main menu of the program
  */
-void menu_usual_statistics(DataFrame *df);
-
-/**
- * @brief Menu
- * @param df: the dataframe to use
- */
-void menu(DataFrame *df);
+void menu_main();
 
 #endif //CDATAFRAME_MENU_H

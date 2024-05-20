@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <string.h>
 
 #include "source/CDataFrame/CDataFrame.h"
@@ -7,7 +6,17 @@
 #include "source/types.h"
 
 int main() {
-    // Create DataFrame
+    /*ENUM_TYPE types[] = {UINT};
+    char *titles[] = {"Column"};
+    const DataFrame df = create_dataframe(types, titles, 1);
+    print_dataframe(&df);
+    menu_add_row(&df);
+    print_dataframe(&df);*/
+
+    DataFrame df = menu_create_random_dataframe();
+    print_dataframe(&df);
+
+    /*// Create DataFrame
     DataFrame df = create_empty_dataframe();
 
     Column* column1 = create_column("Column 1", 10, INT, 0);
@@ -26,8 +35,12 @@ int main() {
     COLUMN_TYPE data_string = {STRING, {.string_value = strdup("Hello, World!")}};
 
     add_data(column1, &data_int);
+    add_data(column1, &data_int);
     add_data(column2, &data_float);
     add_data(column3, &data_string);
+
+    Column *column25 = create_column("Column 25", 10, INT, 1);
+    insert_column_at_index(&df, column25, 1);
 
     // Print DataFrame
     print_dataframe(&df);

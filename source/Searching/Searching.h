@@ -79,4 +79,12 @@ int get_dataframe_max_rows(const DataFrame *df);
  */
 Column *get_column(const DataFrame *df, int index);
 
+/**
+ * @brief get the type of the column at the specified index
+ * @param df the dataframe to get the column type from
+ * @param index the index of the column to get the type of
+ * @return the type of the column at the specified index
+ */
+DataType get_column_type(const DataFrame *df, int index);
+
 #endif //CDATAFRAME_SEARCHING_H

@@ -440,3 +440,23 @@ Column *get_column(const DataFrame *df, const int index) {
     }
     return current->data;
 }
+
+DataType get_column_type(const DataFrame *df, const int index) {
+    if (index < 0)
+    {
+        printf("Error: invalid index\n");
+        return -1;
+    }
+
+    const Node *current = df->columns.head;
+    for (int i = 0; i < index; i++)
+    {
+        if (current == NULL)
+        {
+            printf("Error: index out of bounds\n");
+            return -1;
+        }
+        current = current->next;
+    }
+    return current->data->datatype;
+}
