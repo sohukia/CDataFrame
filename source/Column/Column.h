@@ -15,7 +15,7 @@
  * @param index: the index of the column
  * @return A pointer to the newly created column
  */
-Column *create_column(const char *title, unsigned int max_size, DataType datatype, unsigned long long index);
+Column *create_column(const char *title, unsigned int max_size, DataType datatype, long long unsigned int index);
 
 /**
  * @brief Inserts some data into a column

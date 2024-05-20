@@ -21,37 +21,37 @@ int count_occurrences(const Column *column, void *value)
         switch (column->datatype)
         {
             case UINT:
-                if (column->data[i]->value.uint_value == *(unsigned int *) value)
+                if (column->data[i].value.uint_value == *(unsigned int *) value)
                 {
                     count++;
                 }
                 break;
             case INT:
-                if (column->data[i]->value.int_value == *(int *) value)
+                if (column->data[i].value.int_value == *(int *) value)
                 {
                     count++;
                 }
                 break;
             case CHAR:
-                if (column->data[i]->value.char_value == *(char *) value)
+                if (column->data[i].value.char_value == *(char *) value)
                 {
                     count++;
                 }
                 break;
             case FLOAT:
-                if (column->data[i]->value.float_value == *(float *) value)
+                if (column->data[i].value.float_value == *(float *) value)
                 {
                     count++;
                 }
                 break;
             case DOUBLE:
-                if (column->data[i]->value.double_value == *(double *) value)
+                if (column->data[i].value.double_value == *(double *) value)
                 {
                     count++;
                 }
                 break;
             case STRING:
-                if (strcmp(column->data[i]->value.string_value, (char *) value) == 0)
+                if (strcmp(column->data[i].value.string_value, (char *) value) == 0)
                 {
                     count++;
                 }
@@ -77,37 +77,37 @@ int get_position(const Column *column, void *value)
         switch(column->datatype)
         {
             case UINT:
-                if (column->data[i]->value.uint_value == *(unsigned int *) value)
+                if (column->data[i].value.uint_value == *(unsigned int *) value)
                 {
                     pos = i;
                 }
                 break;
             case INT:
-                if (column->data[i]->value.int_value == *(int *) value)
+                if (column->data[i].value.int_value == *(int *) value)
                 {
                     pos = i;
                 }
                 break;
             case CHAR:
-                if (column->data[i]->value.char_value == *(char *) value)
+                if (column->data[i].value.char_value == *(char *) value)
                 {
                     pos = i;
                 }
                 break;
             case FLOAT:
-                if (column->data[i]->value.float_value == *(float *) value)
+                if (column->data[i].value.float_value == *(float *) value)
                 {
                     pos = i;
                 }
                 break;
             case DOUBLE:
-                if (column->data[i]->value.int_value == *(double *) value)
+                if (column->data[i].value.int_value == *(double *) value)
                 {
                     pos = i;
                 }
                 break;
             case STRING:
-                if (strcmp(column->data[i]->value.string_value, (char *) value) == 0)
+                if (strcmp(column->data[i].value.string_value, (char *) value) == 0)
                 {
                     pos = i;
                 }
@@ -139,7 +139,7 @@ int count_greater_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.uint_value > *(unsigned int *) value)
+                if (column->data[i].value.uint_value > *(unsigned int *) value)
                 {
                     count++;
                 }
@@ -150,7 +150,7 @@ int count_greater_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.int_value > *(int *) value)
+                if (column->data[i].value.int_value > *(int *) value)
                 {
                     count++;
                 }
@@ -161,7 +161,7 @@ int count_greater_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.char_value > *(char *) value)
+                if (column->data[i].value.char_value > *(char *) value)
                 {
                     count++;
                 }
@@ -172,7 +172,7 @@ int count_greater_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.float_value > *(float *) value)
+                if (column->data[i].value.float_value > *(float *) value)
                 {
                     count++;
                 }
@@ -183,7 +183,7 @@ int count_greater_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.double_value > *(double *) value)
+                if (column->data[i].value.double_value > *(double *) value)
                 {
                     count++;
                 }
@@ -194,7 +194,7 @@ int count_greater_than(const Column *column, void *value, const int size)
                     printf("Error: invalid size\n");
                     return -1;
                 }
-                if (strcmp(column->data[i]->value.string_value, (char *) value) > 0)
+                if (strcmp(column->data[i].value.string_value, (char *) value) > 0)
                 {
                     count++;
                 }
@@ -227,7 +227,7 @@ int count_less_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.uint_value < *(unsigned int *) value)
+                if (column->data[i].value.uint_value < *(unsigned int *) value)
                 {
                     count++;
                 }
@@ -238,7 +238,7 @@ int count_less_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.int_value < *(int *) value)
+                if (column->data[i].value.int_value < *(int *) value)
                 {
                     count++;
                 }
@@ -249,7 +249,7 @@ int count_less_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.char_value < *(char *) value)
+                if (column->data[i].value.char_value < *(char *) value)
                 {
                     count++;
                 }
@@ -260,7 +260,7 @@ int count_less_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.float_value < *(float *) value)
+                if (column->data[i].value.float_value < *(float *) value)
                 {
                     count++;
                 }
@@ -271,7 +271,7 @@ int count_less_than(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.double_value < *(double *) value)
+                if (column->data[i].value.double_value < *(double *) value)
                 {
                     count++;
                 }
@@ -282,7 +282,7 @@ int count_less_than(const Column *column, void *value, const int size)
                     printf("Error: invalid size\n");
                     return -1;
                 }
-                if (strcmp(column->data[i]->value.string_value, (char *) value) < 0)
+                if (strcmp(column->data[i].value.string_value, (char *) value) < 0)
                 {
                     count++;
                 }
@@ -315,7 +315,7 @@ int count_equal_to(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.uint_value == *(unsigned int *) value)
+                if (column->data[i].value.uint_value == *(unsigned int *) value)
                 {
                     count++;
                 }
@@ -326,7 +326,7 @@ int count_equal_to(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.int_value == *(int *) value)
+                if (column->data[i].value.int_value == *(int *) value)
                 {
                     count++;
                 }
@@ -337,7 +337,7 @@ int count_equal_to(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.char_value == *(char *) value)
+                if (column->data[i].value.char_value == *(char *) value)
                 {
                     count++;
                 }
@@ -348,7 +348,7 @@ int count_equal_to(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.float_value == *(float *) value)
+                if (column->data[i].value.float_value == *(float *) value)
                 {
                     count++;
                 }
@@ -359,7 +359,7 @@ int count_equal_to(const Column *column, void *value, const int size)
                     printf("Error: value has wrong size\n");
                     return -1;
                 }
-                if (column->data[i]->value.double_value == *(double *) value)
+                if (column->data[i].value.double_value == *(double *) value)
                 {
                     count++;
                 }
@@ -370,7 +370,7 @@ int count_equal_to(const Column *column, void *value, const int size)
                     printf("Error: invalid size\n");
                     return -1;
                 }
-                if (strcmp(column->data[i]->value.string_value, (char *) value) == 0)
+                if (strcmp(column->data[i].value.string_value, (char *) value) == 0)
                 {
                     count++;
                 }
@@ -421,14 +421,14 @@ int get_dataframe_max_rows(const DataFrame *df) {
     return max_rows;
 }
 
-Column *get_column(const DataFrame *df, int index) {
+Column *get_column(const DataFrame *df, const int index) {
     if (index < 0)
     {
         printf("Error: invalid index\n");
         return NULL;
     }
 
-    Node *current = df->columns.head;
+    const Node *current = df->columns.head;
     for (int i = 0; i < index; i++)
     {
         if (current == NULL)
