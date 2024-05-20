@@ -73,17 +73,17 @@ void print_dataframe(const DataFrame *df) {
     current = df->columns.head;
 
     // Print the table header
-    printf("+");
+    printf("*");
     for (int j = 0; j < num_columns; j++) {
-        printf("-");
+        printf("=");
         for (int i = 0; i < max_lengths[j] + 2; i++) {
-            printf("-");
+            printf("=");
         }
     }
-    printf("+\n");
+    printf("*\n");
 
     // Print the column titles
-    printf("|");
+    printf("| ");
     for (int j = 0; j < num_columns; j++) {
         printf(" ");
         printf("%-*s", max_lengths[j], current->data->title); // print the column titles
@@ -95,18 +95,18 @@ void print_dataframe(const DataFrame *df) {
     printf("\n");
 
     // Print the table separator
-    printf("+");
+    printf("*");
     for (int j = 0; j < num_columns; j++) {
-        printf("-");
+        printf("=");
         for (int i = 0; i < max_lengths[j] + 2; i++) {
-            printf("-");
+            printf("=");
         }
     }
-    printf("+\n");
+    printf("*\n");
 
     // Print the dataframe as a table
     for (int i = 0; i < size; i++) {
-        printf("|");
+        printf("| ");
         for (int j = 0; j < num_columns; j++) {
             printf(" ");
             printf("%-*s", max_lengths[j], buffers[j][i]);
@@ -117,14 +117,14 @@ void print_dataframe(const DataFrame *df) {
     }
 
     // Print the table footer
-    printf("+");
+    printf("*");
     for (int j = 0; j < num_columns; j++) {
-        printf("-");
+        printf("=");
         for (int i = 0; i < max_lengths[j] + 2; i++) {
-            printf("-");
+            printf("=");
         }
     }
-    printf("+\n");
+    printf("*\n");
 
     // Free the memory allocated for the buffers
     for (int j = 0; j < num_columns; j++) {
