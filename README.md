@@ -9,8 +9,12 @@ CDataFrame is a C library that provides a data structure similar to a DataFrame 
 To install and use the project, follow these steps:
 1. Clone the GitHub repository to your local machine.
 2. Navigate to the project directory.
+### Run on Linux
 3. Compile the project using a C compiler. For example, you can use gcc: `gcc -o main main.c source/Column/Column.c`
 4. Run the compiled program: `./main`
+### Run on Windows
+3. Open CLion and load the project.
+4. Run the main.c file.
 
 ## Features
 The CDataFrame library provides the following features (at least for now):  
