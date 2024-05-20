@@ -6,17 +6,8 @@
 #include "source/types.h"
 
 int main() {
-    /*ENUM_TYPE types[] = {UINT};
-    char *titles[] = {"Column"};
-    const DataFrame df = create_dataframe(types, titles, 1);
-    print_dataframe(&df);
-    menu_add_row(&df);
-    print_dataframe(&df);*/
 
-    DataFrame df = menu_create_random_dataframe();
-    print_dataframe(&df);
-
-    /*// Create DataFrame
+    // Create DataFrame
     DataFrame df = create_empty_dataframe();
 
     Column* column1 = create_column("Column 1", 10, INT, 0);
