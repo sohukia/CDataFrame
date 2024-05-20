@@ -27,5 +27,36 @@ The CDataFrame library provides the following features (at least for now):
 - Get the position of a value in a column.
 - Count the number of values in a column that are greater than, less than, or equal to a given value.
 
+
+## Project repository
+The project repository is located at: [https://github.com/sohukia/CDataFrame](https://github.com/sohukia/CDataFrame).
+
+## Structure
+The project is structured as follows:
+```
+.
+├── main.c                   The entry point of the program
+├── README.md                The documentation of the project
+└── source
+    ├── CDataFrame
+    │   ├── CDataFrame.c     Contains the implementation of DataFrame operations
+    │   └── CDataFrame.h     Contains the declaration of DataFrame and its operations
+    ├── Column
+    │   ├── Column.c         Contains the implementation of Column operations
+    │   └── Column.h         Contains the declaration of Column and its operations
+    ├── List
+    │   ├── List.c           Contains the implementation of List operations
+    │   └── List.h           Contains the declaration of List and its operations
+    ├── Menu
+    │   └── menu.h           Contains the declaration of menu operations for user interaction
+    ├── Searching
+    │   ├── Searching.c      Contains the implementation of searching operations in DataFrame
+    │   └── Searching.h      Contains the declaration of searching operations
+    ├── Sorting
+    │   ├── Sorting.c        Contains the implementation of sorting operations in DataFrame
+    │   └── Sorting.h        Contains the declaration of sorting operations
+    └── types.h              Contains the declaration of data types used in the project
+```
+
 ## License
 This project is all rights reserved.
