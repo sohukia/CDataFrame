@@ -1,9 +1,11 @@
 #include <string.h>
+#include <stdlib.h>
 
 #include "source/CDataFrame/CDataFrame.h"
 #include "source/Column/Column.h"
-#include "source/Menu/menu.h"
 #include "source/types.h"
+#include "source/Sorting/Sorting.h"
+
 
 int main() {
 
@@ -30,8 +32,15 @@ int main() {
     add_data(column2, &data_float);
     add_data(column3, &data_string);
 
-    Column *column25 = create_column("Column 25", 10, INT, 1);
-    insert_column_at_index(&df, column25, 1);
+    Column *column15 = create_column("Column 1.5", 10, INT, 1);
+    data_int.value.int_value = 23;
+    add_data(column15, &data_int);
+    data_int.value.int_value = 32;
+    add_data(column15, &data_int);
+    data_int.value.int_value = 90;
+    add_data(column15, &data_int);
+
+    insert_column_at_index(&df, column15, 1);
 
     // Print DataFrame
     print_dataframe(&df);

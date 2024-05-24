@@ -7,7 +7,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define REALLOC_SIZE 256
 
 Column* create_column(const char *title, const unsigned int max_size, const DataType datatype, const unsigned long long index)
 {

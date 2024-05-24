@@ -74,7 +74,7 @@ int partition(void *array, const DataType type, const int low, const unsigned in
 }
 
 // non recursive quicksort
-void quicksort(void *array, const DataType type, int low, unsigned int high)
+void quicksort(void *array, const DataType type, int low, int high)
 {
     // Create an auxiliary stack
     int stack[high - low + 1];

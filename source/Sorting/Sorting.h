@@ -31,7 +31,7 @@ int partition(void *array, DataType type, int low, unsigned int high);
  * @param : low index
  * @param : high index
  */
-void quicksort(void *array, DataType type, int low, unsigned int high);
+void quicksort(void *array, DataType type, int low, int high);
 
 /**
  * @bref Sort the partially sorted array with insertion sort
