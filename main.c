@@ -56,7 +56,12 @@ int main() {
 
     print_dataframe(&df);
 
-    printf("Less than %d\n", count_less_than(df.columns.head->data->data, 50, df.columns.head->data->size));
+    printf("There are %d values less than %d.\n", count_less_than(df.columns.head->data, &data_int.value.int_value, sizeof(int)), data_int.value.int_value);
+
+    unsigned int value = 50;
+    int count = count_greater_than(df.columns.head->data, &value, sizeof(unsigned int));
+    printf("Count of values greater than %u : %d\n\n", value, count);
+
 
     menu_main();
 

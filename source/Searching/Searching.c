@@ -207,6 +207,88 @@ int count_greater_than(const Column *column, void *value, const int size)
     return count;
 }
 
+int count_less_than_recursive(const Column *column, void *value, const int size, int i)
+{
+    if (i >= column->size)
+    {
+        return 0;
+    }
+
+    switch (column->datatype)
+    {
+        case UINT:
+            if (sizeof(unsigned int) != size)
+            {
+                printf("Error: value has wrong size\n");
+                return -1;
+            }
+            if (column->data[i].value.uint_value < *(unsigned int *) value)
+            {
+                return 1 + count_less_than_recursive(column, value, size, i + 1);
+            }
+            break;
+        case INT:
+            if (sizeof(int) != size)
+            {
+                printf("Error: value has wrong size\n");
+                return -1;
+            }
+            if (column->data[i].value.int_value < *(int *) value)
+            {
+                return 1 + count_less_than_recursive(column, value, size, i + 1);
+            }
+            break;
+        case CHAR:
+            if (sizeof(char) != size)
+            {
+                printf("Error: value has wrong size\n");
+                return -1;
+            }
+            if (column->data[i].value.char_value < *(char *) value)
+            {
+                return 1 + count_less_than_recursive(column, value, size, i + 1);
+            }
+            break;
+        case FLOAT:
+            if (sizeof(float) != size)
+            {
+                printf("Error: value has wrong size\n");
+                return -1;
+            }
+            if (column->data[i].value.float_value < *(float *) value)
+            {
+                return 1 + count_less_than_recursive(column, value, size, i + 1);
+            }
+            break;
+        case DOUBLE:
+            if (sizeof(double) != size)
+            {
+                printf("Error: value has wrong size\n");
+                return -1;
+            }
+            if (column->data[i].value.double_value < *(double *) value)
+            {
+                return 1 + count_less_than_recursive(column, value, size, i + 1);
+            }
+            break;
+        case STRING:
+            if (size < 0)
+            {
+                printf("Error: invalid size\n");
+                return -1;
+            }
+            if (strcmp(column->data[i].value.string_value, (char *) value) < 0)
+            {
+                return 1 + count_less_than_recursive(column, value, size, i + 1);
+            }
+            break;
+        default:
+            break;
+    }
+
+    return count_less_than_recursive(column, value, size, i + 1);
+}
+
 int count_less_than(const Column *column, void *value, const int size)
 {
     if (column == NULL || value == NULL)
@@ -215,172 +297,7 @@ int count_less_than(const Column *column, void *value, const int size)
         return -1;
     }
 
-    int count = 0;
-
-    for (int i = 0; i < column->size; i++)
-    {
-        switch (column->datatype)
-        {
-            case UINT:
-                if (sizeof(unsigned int) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.uint_value < *(unsigned int *) value)
-                {
-                    count++;
-                }
-                break;
-            case INT:
-                if (sizeof(int) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.int_value < *(int *) value)
-                {
-                    count++;
-                }
-                break;
-            case CHAR:
-                if (sizeof(char) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.char_value < *(char *) value)
-                {
-                    count++;
-                }
-                break;
-            case FLOAT:
-                if (sizeof(float) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.float_value < *(float *) value)
-                {
-                    count++;
-                }
-                break;
-            case DOUBLE:
-                if (sizeof(double) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.double_value < *(double *) value)
-                {
-                    count++;
-                }
-                break;
-            case STRING:
-                if (size < 0)
-                {
-                    printf("Error: invalid size\n");
-                    return -1;
-                }
-                if (strcmp(column->data[i].value.string_value, (char *) value) < 0)
-                {
-                    count++;
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    return count;
-}
-
-int count_equal_to(const Column *column, void *value, const int size)
-{
-    if (column == NULL || value == NULL)
-    {
-        printf("Error: invalid argument\n");
-        return -1;
-    }
-
-    int count = 0;
-
-    for (int i = 0; i < column->size; i++)
-    {
-        switch (column->datatype)
-        {
-            case UINT:
-                if (sizeof(unsigned int) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.uint_value == *(unsigned int *) value)
-                {
-                    count++;
-                }
-                break;
-            case INT:
-                if (sizeof(int) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.int_value == *(int *) value)
-                {
-                    count++;
-                }
-                break;
-            case CHAR:
-                if (sizeof(char) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.char_value == *(char *) value)
-                {
-                    count++;
-                }
-                break;
-            case FLOAT:
-                if (sizeof(float) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.float_value == *(float *) value)
-                {
-                    count++;
-                }
-                break;
-            case DOUBLE:
-                if (sizeof(double) != size)
-                {
-                    printf("Error: value has wrong size\n");
-                    return -1;
-                }
-                if (column->data[i].value.double_value == *(double *) value)
-                {
-                    count++;
-                }
-                break;
-            case STRING:
-                if (size < 0)
-                {
-                    printf("Error: invalid size\n");
-                    return -1;
-                }
-                if (strcmp(column->data[i].value.string_value, (char *) value) == 0)
-                {
-                    count++;
-                }
-                break;
-            default:
-                break;
-        }
-    }
-
-    return count;
+    return count_less_than_recursive(column, value, size, 0);
 }
 
 Node *search_by_name(const DataFrame *df, const char *title) {
