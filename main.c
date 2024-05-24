@@ -1,9 +1,12 @@
+#include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
 #include "source/CDataFrame/CDataFrame.h"
 #include "source/Column/Column.h"
 #include "source/types.h"
+#include "source/Menu/menu.h"
+#include "source/Searching/Searching.h"
 #include "source/Sorting/Sorting.h"
 
 
@@ -38,12 +41,24 @@ int main() {
     data_int.value.int_value = 32;
     add_data(column15, &data_int);
     data_int.value.int_value = 90;
+    add_data(column15, &data_int);data_int.value.int_value = 45;
     add_data(column15, &data_int);
 
     insert_column_at_index(&df, column15, 1);
 
     // Print DataFrame
     print_dataframe(&df);
+
+    display_part_of_dataframe_columns(&df, 1, 3);
+
+
+    delete_column(&df, "Column 1.5");
+
+    print_dataframe(&df);
+
+    printf("Less than %d\n", count_less_than(df.columns.head->data->data, 50, df.columns.head->data->size));
+
+    menu_main();
 
     // Cleanup
     delete_dataframe(&df);
